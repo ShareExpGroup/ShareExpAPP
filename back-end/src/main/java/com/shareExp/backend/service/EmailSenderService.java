@@ -10,9 +10,6 @@ public class EmailSenderService {
 
     private JavaMailSender mailSender;
 
-    public EmailSenderService(JavaMailSender mailSender){
-        this.mailSender = mailSender;
-    }
 
     public void sendSimpleEmail(
             String toEmail,
@@ -20,7 +17,7 @@ public class EmailSenderService {
             String subject
     ) {
         SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setFrom("kaixokoko1@gmail.com");
+        msg.setFrom("hajar.dami.14@gmail.com");
         msg.setTo(toEmail);
         msg.setSubject(subject);
         msg.setText(body);
