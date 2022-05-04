@@ -1,0 +1,131 @@
+
+.color{
+  background: linear-gradient(93.54deg, #3B82F6 9.03%, #D946EF 43.88%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.07);}
+
+   @media (max-width: 1000px) { 
+    .img{
+        display: none;
+          width: 682px;
+    height: 615px;
+  
+    }
+ }
+ .img2{
+  margin-right: "40px";
+  margin-top: "1px";
+  width: 80px;
+  height: 90px;
+  margin-left: 10%;
+  top: 39px;
+
+}
+@media (max-width: 1000px) 
+{   
+.title{
+  
+display: none;}
+
+}
+@media (max-width: 1000px) 
+{   
+  .test{
+    
+  display: none;}
+  
+  }
+
+.title{
+position: absolute;
+ width: 269.73px;
+  height: 92.13px;
+  left: 287.34px;
+  margin-top: 0ch;
+  font-family: 'Fira Sans Condensed';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 84px;
+letter-spacing: 0.02em;
+  color: #AF51C5;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.07);}
+    .desc{
+ 
+  width: 430px;
+  height: 60px;
+font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 30px;
+  /* or 200% */
+  
+  
+  color: #E5E7EB;
+  
+  opacity: 0.8;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.07);}
+
+
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+html {
+  font-family: "Montserrat", sans-serif;
+ background-color: rgba(17, 24, 39, 1);
+ ;
+  position: relative;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.button{display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 20px 40px;
+  width: 168px;
+  height: 59px;
+  font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+color: white;
+  background: linear-gradient(86.95deg, #3B3CF6 2.58%, #D946EF 105.04%), #F9FAFB;
+  border-radius: 6px;
+margin-left: 150px;}
