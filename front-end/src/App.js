@@ -6,12 +6,15 @@ import SignIn from "./Components/Signin/SignIn"
 import SignUp from "./Components/signup/SignUp"
 import {useEffect, useState} from "react";
 import {BrowserRouter as Router, Route, Routes, useRoutes} from "react-router-dom";
+import Dashboard from './Components/Dashboard/Dashboard';
+
 
 function App() {
   const VisitorRoutes = () => useRoutes([
     {path: "/", element: <Home/>},
    {path: "/signin", element: <SignIn/>},
    {path:"/signup", element: <SignUp/>},
+   {path:"/dashboard", element: <Dashboard/>}
   
 
 ]);
