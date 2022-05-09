@@ -1,0 +1,82 @@
+.card{
+    background-color: black;
+    box-shadow: 0 0 0.9375em rgba(0, 0, 0, 0.219);
+    width: 900px;
+    border-radius: 4px;
+
+    display: flex;
+    margin: auto;
+    
+
+    
+}
+
+.card_header{
+    display: flex;
+    margin-top: -6%;
+    margin-left: -31%;
+    font-size: 13px;
+}
+.card_header #like, #comment{
+    margin-left: 5px;
+}
+
+.card_header .comments{
+    margin-left: 40px;
+}
+.card_hero{
+    flex: 0 0 50%;
+    position: relative;
+}
+
+.card_desc{
+    margin-left: -30%;
+    margin-top: 15px;
+}
+
+.card_img{
+    flex: 0 0 50%;
+    position: relative;
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+}
+
+.card_content{
+    flex: 1;
+    padding: 35px 35px 25px 35px;
+    color: white;
+}
+
+.social_media{
+    margin-left: 39%;
+
+}
+
+.form_comment{
+    width: 900px;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+input[type=text]:focus{
+    outline: 1px solid white;
+    text-align: center;
+}
+
+input[type=text]::placeholder{
+    text-align: center;
+}
+
+.form_comment #username{
+    border-radius: 5px;
+    width: 154px;
+    height: 40px;
+}
+
+.form_comment #input_comment{
+    width: 437px;
+    height: 40px;
+    border-radius: 5px;
+    margin-left: 40px;
+}
