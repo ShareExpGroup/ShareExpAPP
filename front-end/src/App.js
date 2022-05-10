@@ -8,6 +8,7 @@ import {useEffect, useState} from "react";
 import {BrowserRouter as Router, Route, Routes, useRoutes} from "react-router-dom";
 import Dashboard from './Components/Dashboard/Dashboard';
 import Article from './Components/Article/Article';
+import AddExp from "./Components/AddExp/AddExp"
 
 
 function App() {
@@ -16,8 +17,9 @@ function App() {
    {path: "/signin", element: <SignIn/>},
    {path:"/signup", element: <SignUp/>},
    {path:"/dashboard", element: <Dashboard/>},
-   {path:"/article", element: <Article/>}
+   {path:"/article", element: <Article/>},
   
+   {path:"/AddExp", element: <AddExp/>}
 
 ]);
   return (
