@@ -25,6 +25,14 @@
   top: 39px;
 
 }
+
+@media (max-width: 1000px) 
+{   
+.img2{
+  
+display: none;}
+
+}
 @media (max-width: 1000px) 
 {   
 .title{
@@ -39,6 +47,20 @@ display: none;}
   display: none;}
   
   }
+  /* background-Image: url("C:\Users\PC\Desktop\ShareExpAPP\front-end\public\BACK.png");*/
+  @media (max-width: 1199px)  {
+            .back{
+              background-color: #DDD8EF;
+        }
+      }
+        
+        @media (min-width: 1200px) {
+          .back{
+           
+            background-color: #DDD8EF;
+               }
+        }
+  
 
 .title{
 position: absolute;
@@ -129,3 +151,6 @@ color: white;
   background: linear-gradient(86.95deg, #3B3CF6 2.58%, #D946EF 105.04%), #F9FAFB;
   border-radius: 6px;
 margin-left: 150px;}
+.mycolor{ background: linear-gradient(86.95deg, #3B3CF6 2.58%, #D946EF 105.04%), #F9FAFB;
+  color: white;
+}
