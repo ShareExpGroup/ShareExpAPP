@@ -7,6 +7,7 @@ import SignUp from "./Components/signup/SignUp"
 import {useEffect, useState} from "react";
 import {BrowserRouter as Router, Route, Routes, useRoutes} from "react-router-dom";
 import Dashboard from './Components/Dashboard/Dashboard';
+import Article from './Components/Article/Article';
 
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
     {path: "/", element: <Home/>},
    {path: "/signin", element: <SignIn/>},
    {path:"/signup", element: <SignUp/>},
-   {path:"/dashboard", element: <Dashboard/>}
+   {path:"/dashboard", element: <Dashboard/>},
+   {path:"/article", element: <Article/>}
   
 
 ]);
