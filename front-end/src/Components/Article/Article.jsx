@@ -4,6 +4,7 @@ import Header from '../Home/header/Header';
 import ArticleCard from './ArticleCard';
 import '../../style/ArticleCard.css'
 import { Button } from '@mui/material';
+import CommentCard from '../Comment/CommentCard';
 
 
 const Article = () => {
@@ -17,6 +18,20 @@ const Article = () => {
         content: "Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum, nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum. Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum."
                   + "Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum, nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum. Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum"
     }
+
+    const comments = [
+        {
+          username: "Michel Michel", 
+          text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean luctus ut est sed faucibus. Duis bibendum ac ex vehicula laoreet. Suspendisse congue vulputate lobortis.",
+          date: "1 minute" 
+        }
+        ,
+        {
+            username: "abcd", 
+            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean luctus ut est sed faucibus. Duis bibendum ac ex vehicula laoreet. Suspendisse congue vulputate lobortis.",
+            date: "2 minutes" 
+        }
+    ]
     
     return (
         <div>
@@ -43,6 +58,9 @@ const Article = () => {
                     }}/>
                 <Button  style={{color :"white", width: "133px", height: "40px", marginLeft: "50px"}} className="button" href="/signup">Comment</Button>
             </form>
+            {comments.map((comment) => (
+                <CommentCard comment={comment}/>
+            ))}
             
         </div>
     );
