@@ -51,10 +51,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/login*").permitAll()
                 .antMatchers("/api/account/create/**").permitAll()
-                .antMatchers("/api/account/list/**").hasRole("SUPERUSER")
                 .antMatchers("/api/account/delete").authenticated()
                 .antMatchers("/api/account/changePassword").authenticated()
-                .antMatchers("/api/account/delete/**/**").hasRole("SUPERUSER");
+                .antMatchers("/api/account/delete/**/**").hasRole("SUPERUSER")
+        .antMatchers("/comment/s*").permitAll()
+                .antMatchers( "/api/account/list/client/all").permitAll();
 
                 /*.antMatchers("/api/services/hello").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/api/services/teacher/**").hasAuthority("auth1")
