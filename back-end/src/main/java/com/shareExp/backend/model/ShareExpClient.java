@@ -1,13 +1,17 @@
 package com.shareExp.backend.model;
 
+
 import com.shareExp.backend.enumeration.Role;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.Table;
 import java.util.Date;
-import java.util.List;
-import java.util.Set;
 
 @Entity
+
+@Inheritance
+@Table(name = "ShareExpClient")
 public class ShareExpClient extends User{
 /*
     @OneToMany
