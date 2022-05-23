@@ -1,12 +1,13 @@
 package com.shareExp.backend.model;
 
 
+import com.sun.istack.NotNull;
+import com.sun.istack.Nullable;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.data.annotation.CreatedDate;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -16,17 +17,19 @@ import java.util.Date;
 @JsonIgnoreProperties(value = {"createdAt"},
         allowGetters = true)
 public class Comment  {
+    public Comment() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_client" ,insertable = false, updatable = false)
-    @NotNull()
+    @Nullable
    private ShareExpClient name;
 
-    @NotNull(message = "Title is required")
-    @NotEmpty(message = "Title should not be empty")
+    @Column(nullable = true, updatable = true)
     private String content;
 
     @Column(nullable = true, updatable = true)
@@ -34,6 +37,10 @@ public class Comment  {
     @CreatedDate
     private Date createdAt;
 
+    public Comment(ShareExpClient name, String content) {
+        this.name = name;
+        this.content = content;
+    }
 
     public Long getId() {
         return id;

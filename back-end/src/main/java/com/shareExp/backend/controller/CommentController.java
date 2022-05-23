@@ -1,9 +1,12 @@
 package com.shareExp.backend.controller;
 
 
+import com.shareExp.backend.DTO.CommentDto;
 import com.shareExp.backend.model.Comment;
 import com.shareExp.backend.repository.CommentRepository;
+import com.shareExp.backend.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/comment")
 public class CommentController {
+    CommentService commentService;
     @Autowired
     CommentRepository commentRepository;
 
@@ -28,10 +32,12 @@ public class CommentController {
 
 
     @PostMapping("/comments")
-    @ResponseBody
-    public Comment createComment(Comment comment, HttpServletResponse response) {
-        response.addHeader("Access-Control-Allow-Origin", "*");
-        return commentRepository.save(comment);
+    public ResponseEntity<Comment>
+    createComment(@ModelAttribute CommentDto comment) {
+       return new ResponseEntity<>(
+                       commentService.AddComment(comment),
+                HttpStatus.CREATED
+        );
     }
 
 
