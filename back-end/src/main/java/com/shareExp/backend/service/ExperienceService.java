@@ -2,18 +2,27 @@ package com.shareExp.backend.service;
 
 import com.shareExp.backend.DTO.ExperienceDto;
 import com.shareExp.backend.model.Experience;
+import com.shareExp.backend.model.ShareExpClient;
 import com.shareExp.backend.repository.ExperienceRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
+
+import static com.shareExp.backend.enumeration.Role.CLIENT;
+
 @Service
 public class ExperienceService {
+    @Autowired
     private ExperienceRepository experienceRepository;
     private  ClientService clientService;
+    @Autowired
     private ImageService imageService;
     @PersistenceContext
     private EntityManager entityManager;
@@ -32,6 +41,8 @@ public class ExperienceService {
     {
         String email =
                 (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        //for testing
+        //ShareExpClient shareExpClient = new ShareExpClient("amina", "chaabane", new Date(2000, 01, 25), "amina.chaabane34@gmail.com", "123");
 
 Experience exp =
         new Experience(clientService.findByEmail(email),experience.getTitle(), experience.getLike(),experience.getDescription());
