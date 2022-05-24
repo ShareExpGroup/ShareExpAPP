@@ -9,9 +9,6 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-
-@Inheritance
-@Table(name = "ShareExpClient")
 public class ShareExpClient extends User{
 /*
     @OneToMany

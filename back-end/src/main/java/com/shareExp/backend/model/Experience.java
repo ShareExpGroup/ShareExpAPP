@@ -1,68 +1,33 @@
 package com.shareExp.backend.model;
 
 import com.sun.istack.Nullable;
-
+import org.springframework.data.annotation.CreatedDate;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.util.Date;
-@Inheritance
 @Entity
-@Table(name="experience")
+
+@JsonIgnoreProperties(value = {"creationDate"},
+        allowGetters = true)
+@Table
 public class Experience {
+    public Experience() {
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_client" ,insertable = false, updatable = false)
+    @JoinColumn(name = "id_clients")
     @Nullable
     private ShareExpClient shareExpClient;
 
-    @NotNull(message = "Title is required")
-    @NotEmpty(message = "Title should not be empty")
+
+    @Column(nullable = true, updatable = true)
     private String title;
-
-    // I removed the notNull condition when i added the second constructor
-    // @NotNull(message = "Creation date is required")
-    private Date creationDate;
-    private Integer like;
-    //to resolve comment
-    // List<Comment> comment
-
-
-    public Experience(ShareExpClient shareExpClient, String title, Date creationDate, int like, String description) {
-        this.shareExpClient = shareExpClient;
-        this.title = title;
-        this.creationDate = creationDate;
-        this.like = like;
-        this.description = description;
-    }
-    @NotNull(message = "Description is required")
-    @Column(name="description",columnDefinition="LONGTEXT")
-    private String description;
-    public String image;
-
-    public Experience() {
-    }
-
-    public Experience(ShareExpClient shareExpClient, String title, int like, String description) {
-        this.title = title;
-        this.like = like;
-        this.description = description;
-        this.shareExpClient=shareExpClient;
-    }
-
-    public Experience(Long id, ShareExpClient shareExpClient, String title, Date creationDate, Integer like, String description, String image) {
-        this.id = id;
-        this.shareExpClient = shareExpClient;
-        this.title = title;
-        this.creationDate = creationDate;
-        this.like = like;
-        this.description = description;
-        this.image = image;
-    }
+    @Column(nullable = true, updatable = true)
+    private String image;
 
     public Long getId() {
         return id;
@@ -88,6 +53,14 @@ public class Experience {
         this.title = title;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public Date getCreationDate() {
         return creationDate;
     }
@@ -96,12 +69,12 @@ public class Experience {
         this.creationDate = creationDate;
     }
 
-    public int getLike() {
-        return like;
+    public Integer getLikes() {
+        return likes;
     }
 
-    public void setLike(int like) {
-        this.like = like;
+    public void setLikes(Integer like) {
+        this.likes = like;
     }
 
     public String getDescription() {
@@ -112,11 +85,31 @@ public class Experience {
         this.description = description;
     }
 
-    public String getImage() {
-        return image;
+    @Column(nullable = true, updatable = true)
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreatedDate
+    private Date creationDate;
+
+    @Column(nullable = true, updatable = true)
+    private Integer likes;
+    @Column(nullable = true, updatable = true)
+    private String description;
+
+    public Experience(ShareExpClient shareExpClient, String title, int like, String description) {
+        this.title = title;
+        this.likes = like;
+        this.description = description;
+        this.shareExpClient=shareExpClient;
     }
 
-    public void setImage(String image) {
+    public Experience(Long id, ShareExpClient shareExpClient, String title, Date creationDate, Integer like, String description, String image) {
+        this.id = id;
+        this.shareExpClient = shareExpClient;
+        this.title = title;
+        this.creationDate = creationDate;
+        this.likes = like;
+        this.description = description;
         this.image = image;
     }
+
 }
