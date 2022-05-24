@@ -78,13 +78,15 @@ export default function SignIn() {
         (res) => {
             let resData = extractRoleAndJWT(res.data);
             localStorage.setItem("currentUser", resData[1]);
-            if (resData[0] === "ROLE_CLIENT") {
-                localStorage.setItem("isMentee", "true");
+           if (resData[0] === "ROLE_CLIENT") {
+                localStorage.setItem("isshaereExpuser", "true");
             } else if (resData[0] === "ROLE_SUPERUSER") {
                 localStorage.setItem("isAdmin", "true");
             }
+
             setSuccessful(true);
             console.log(resData);
+            console.log(localStorage);
             goto("/");
         }
         ,

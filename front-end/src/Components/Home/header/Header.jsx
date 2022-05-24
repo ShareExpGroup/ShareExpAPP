@@ -21,8 +21,7 @@ function Header() {
 
     <div style={{marginTop:"20px" ,marginLet:"50px"}}>
       
-      {logedIn ? <Logout /> : <SignUp />}
-      {logedIn ? <SignIn />: <SignIn />}
+      {logedIn ?  <Logout />:  <div><SignUp /><SignIn /></div>}
    <ContactUs />
       <AboutUs />
       <Icon/>

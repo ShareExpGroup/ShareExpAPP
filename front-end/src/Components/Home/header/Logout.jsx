@@ -5,7 +5,7 @@ import MyButton from "../../usedComponents/MyButton";
 function Logout() {
   let handleClick = () => {
     localStorage.removeItem("currentUser");
-    localStorage.removeItem("isStudent");
+    localStorage.removeItem("isshaereExpuser"); 
     localStorage.removeItem("isAdmin");
     window.location.href = "/";
   };
@@ -16,6 +16,7 @@ function Logout() {
       className="Logout"
       value="Se déconnecter"
       onClick={handleClick}
+      href="/"
     />
   );
 }

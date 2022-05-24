@@ -17,7 +17,8 @@ import java.security.NoSuchAlgorithmException;
 @AllArgsConstructor
 public class ImageService {
     FileConfig fileConfig;
-    public String uploadExpImage(Experience experience, MultipartFile file) throws IOException, NoSuchAlgorithmException {
+    public String uploadExpImage(Experience experience, MultipartFile file)
+            throws IOException, NoSuchAlgorithmException {
         if (file == null || file.getContentType() == null) ;
         if(!file.getContentType().startsWith("image") && !file.getContentType().startsWith("application/pdf")){
             throw new FileTypeInappropriateException(file.getContentType().toLowerCase(),"image","pdf");

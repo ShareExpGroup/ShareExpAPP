@@ -1,11 +1,8 @@
 import {goto} from "./utils";
 
-function isMentee() {
-    return localStorage.getItem("isMentee") === "true";
-}
 
-function isMentor() {
-    return localStorage.getItem("isMentee") === "false";
+function isshaereExpuser() {
+    return localStorage.getItem("isshaereExpuser") === "true";
 }
 
 function isAdmin() {
@@ -17,10 +14,10 @@ function isGuest() {
 }
 function logOut(){
     localStorage.removeItem("currentUser");
-    localStorage.removeItem("isMentee");
-    localStorage.removeItem("isAdmin");
+    localStorage.removeItem("isshaereExpuser");
+
     goto("/");
 }
 
 
-export {isMentee,isMentor,isGuest,isAdmin,logOut}
+export {isshaereExpuser,isGuest,isAdmin,logOut}
