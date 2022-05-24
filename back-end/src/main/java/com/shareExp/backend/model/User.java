@@ -1,8 +1,11 @@
 package com.shareExp.backend.model;
 
 import com.shareExp.backend.enumeration.Role;
+import com.sun.istack.Nullable;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Inheritance
