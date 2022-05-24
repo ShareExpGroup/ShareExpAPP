@@ -1,6 +1,6 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
-import Start from '../Home/Body/Start';
+import Start from './Start';
 import Card from '@mui/material/Card'
 import '../../style/Body_dash.css'
 import HorizontalScroll from 'react-scroll-horizontal';

@@ -53,6 +53,9 @@ export default function SignIn() {
   const [successful, setSuccessful] = useState(false);
 
   const handleSubmit = (event) => {
+    console.log("actual user ")
+    console.log(localStorage.getItem("currentUser"));
+
 
     event.preventDefault();
     // alert(event.currentTarget)
@@ -78,15 +81,15 @@ export default function SignIn() {
         (res) => {
             let resData = extractRoleAndJWT(res.data);
             localStorage.setItem("currentUser", resData[1]);
-           if (resData[0] === "ROLE_CLIENT") {
-                localStorage.setItem("isshaereExpuser", "true");
-            } else if (resData[0] === "ROLE_SUPERUSER") {
+
+       if (resData[0] === "ROLE_SUPERUSER") {
                 localStorage.setItem("isAdmin", "true");
             }
-
+else     localStorage.setItem("isshaereExpuser", "true");
             setSuccessful(true);
-            console.log(resData);
-            console.log(localStorage);
+            console.log("hado homa res");
+            console.log(resData[1]);
+            console.log(localStorage.getItem("currentUser"));
             goto("/");
         }
         ,
