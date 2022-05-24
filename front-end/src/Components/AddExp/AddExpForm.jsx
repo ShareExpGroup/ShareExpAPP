@@ -16,6 +16,8 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import BACK from "../../images/BACK.png"
 import '../../App.css';
 import AddExpButton from "./AddExpButton"
+import {useEffect, useState} from "react";
+import {addexp} from "../../service/Experience"
 function AddExpForm(){
     const theme = createTheme({
         palette: {
@@ -31,6 +33,41 @@ function AddExpForm(){
     /*backgroundImage: "url(/BACK.png)"*/   /*style={{   height: "599px",
           width: "900px",
            marginLeft:"20%"}}*/
+
+           const [date, setDate] = React.useState(Date.now());
+    const [values, setValues] = useState([]);
+    const [currValue, setCurrValue] = useState("");
+    const [successful, setSuccessful] = useState(false);
+    const handleChange = (newValue) => {
+        setDate(newValue);
+    };
+    const handleSubmit = (event) => {
+
+      addexp(event,setSuccessful,values);
+    };
+    const handleKeyUp = (e) => {
+        console.log(e.keyCode);
+        if (e.keyCode == 32) {
+            setValues((oldState) => [...oldState, e.target.value]);
+            setCurrValue("");
+        }
+    };
+
+    useEffect(() => {
+        console.log(values);
+    }, [values]);
+
+    const handleChangee = (e) => {
+        setCurrValue(e.target.value);
+    };
+
+    const handleDelete = ( item, index) =>{
+        let arr = [...values]
+        arr.splice(index,1)
+        console.log(item)
+        setValues(arr)
+    }
+
  return (
     <ThemeProvider theme={theme}>
      <div className='back' style={{   height: "665px",

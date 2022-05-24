@@ -10,23 +10,15 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import Article from './Components/Article/Article';
 import AddExp from "./Components/AddExp/AddExp"
 
-
+import {getRoutes} from "./routes"
 function App() {
-  const VisitorRoutes = () => useRoutes([
-    {path: "/", element: <Home/>},
-   {path: "/signin", element: <SignIn/>},
-   {path:"/signup", element: <SignUp/>},
-   {path:"/dashboard", element: <Dashboard/>},
-   {path:"/article", element: <Article/>},
-  
-   {path:"/AddExp", element: <AddExp/>}
-
-]);
+ 
   return (
     <div className="App">
       
       <Router>
-      <VisitorRoutes/>
+      
+      {getRoutes()}
         
 </ Router>
 
