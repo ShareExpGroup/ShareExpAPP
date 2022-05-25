@@ -17,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/comment")
 public class CommentController {
+    @Autowired
     CommentService commentService;
     @Autowired
     CommentRepository commentRepository;
@@ -33,7 +34,7 @@ public class CommentController {
 
     @PostMapping("/comments")
     public ResponseEntity<Comment>
-    createComment(@ModelAttribute CommentDto comment) {
+    createComment(@RequestBody CommentDto comment) {
        return new ResponseEntity<>(
                        commentService.AddComment(comment),
                 HttpStatus.CREATED
