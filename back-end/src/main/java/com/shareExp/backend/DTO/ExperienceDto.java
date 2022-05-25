@@ -13,6 +13,7 @@ public class ExperienceDto implements Serializable {
     private final String description;
     MultipartFile image;
 
+
     public ExperienceDto(String title, int like, String description, MultipartFile image) {
         this.title = title;
         this.like = like;
@@ -20,9 +21,10 @@ public class ExperienceDto implements Serializable {
         this.image = image;
     }
 
+    /*
     public ExperienceDto(Experience experience) {
         this.title = experience.getTitle();
         this.like = experience.getLikes();
         this.description = experience.getDescription();
-    }
+    }*/
 }

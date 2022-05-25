@@ -1,5 +1,6 @@
 package com.shareExp.backend.service;
 
+import com.shareExp.backend.DTO.ExpRequestDto;
 import com.shareExp.backend.DTO.ExperienceDto;
 import com.shareExp.backend.exception.ExperienceNotFoundException;
 import com.shareExp.backend.exception.UserIncompleteDataException;
@@ -9,6 +10,7 @@ import com.shareExp.backend.repository.ExperienceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -63,18 +65,18 @@ Experience exp =
         return exp;
 
     }
-
+    /*
     public List<ExperienceDto> getAllExperiences() {
         List<Experience> experiences = experienceRepository.findAll();
         return experiences.stream().map(ExperienceDto::new).collect(Collectors.toList());
     }
-
+    */
     public void deleteExperience(long id) {
         if (id == 0 || !experienceRepository.existsById(id))
             throw new ExperienceNotFoundException(id);
         experienceRepository.deleteById(id);
     }
-
+    /*
     public List<ExperienceDto> getExpByShareClient(ShareExpClient shareExpClient) {
 
         if (shareExpClient.getId() != 0) {
@@ -96,6 +98,11 @@ Experience exp =
     }
         public List<ExperienceDto> getExpByShareClient(){
             return getExpByShareClient(clientService.findCurrentClient());
+        }*/
+
+        public List<ExpRequestDto> getPopularExperiences(int min_likes){
+            Optional<List<Experience>> experiences = experienceRepository.findByLikesGreaterThanEqual(min_likes);
+            return experiences.get().stream().map(ExpRequestDto::new).collect(Collectors.toList());
         }
 
 }
