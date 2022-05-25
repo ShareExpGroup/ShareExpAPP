@@ -69,4 +69,13 @@ public class ExperienceController {
                 HttpStatus.OK
         );
     }
+
+    @GetMapping (path = "/{id}",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ExpRequestDto> getOfferById(@PathVariable long id){
+        return new ResponseEntity<>(
+                experienceService.getExpById(id),
+                HttpStatus.OK
+        );
+    }
 }
