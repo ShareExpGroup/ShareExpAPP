@@ -78,14 +78,19 @@ export default function SignIn() {
             'Access-Control-Allow-Origin': "*"
         }
     }).then(
+     
         (res) => {
+          
             let resData = extractRoleAndJWT(res.data);
             localStorage.setItem("currentUser", resData[1]);
 
        if (resData[0] === "ROLE_SUPERUSER") {
                 localStorage.setItem("isAdmin", "true");
             }
-else     localStorage.setItem("isshaereExpuser", "true");
+else  
+if (resData[0] === "ROLE_CLIENT") {
+  localStorage.setItem("isshaereExpuser", "true");
+}   
             setSuccessful(true);
             console.log("hado homa res");
             console.log(resData[1]);

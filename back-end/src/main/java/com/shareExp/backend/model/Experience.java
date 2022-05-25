@@ -26,8 +26,7 @@ public class Experience {
 
     @Column(nullable = true, updatable = true)
     private String title;
-    @Column(nullable = true, updatable = true)
-    private String image;
+
 
     public Long getId() {
         return id;
@@ -94,6 +93,8 @@ public class Experience {
     private Integer likes;
     @Column(nullable = true, updatable = true)
     private String description;
+    @Column(nullable = true, updatable = true)
+    private String image;
 
     public Experience(ShareExpClient shareExpClient, String title, int like, String description) {
         this.title = title;

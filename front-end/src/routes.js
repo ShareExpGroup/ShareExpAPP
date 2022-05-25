@@ -11,13 +11,11 @@ import Article from './Components/Article/Article';
 import AddExp from "./Components/AddExp/AddExp"
 import { isshaereExpuser,isGuest, isAdmin } from "./service/authentication"
 
-
 const IsshaereExpuserRoutes = () => useRoutes([
     {path:"/", element: <Dashboard/>},
     {path:"/article", element: <Article/>},
    
     {path:"/AddExp", element: <AddExp/>},
-  
 
 ]);
 
@@ -28,7 +26,7 @@ const AdminRoutes = () => useRoutes([
     {path:"/dashboard", element: <Dashboard/>},
     {path:"/article", element: <Article/>},
    
-    {path:""/AddExp, element: <AddExp/>}
+    {path:"/AddExp", element: <AddExp/>},
 
 
 ]);
@@ -47,8 +45,9 @@ const GuestRoutes = () => useRoutes([
 
 const getRoutes = () => {
     console.log("luser likhdam ");
-    console.log(isshaereExpuser());
-    console.log("luser likhdam ");
+ 
+    console.log(localStorage.getItem("currentUser"))
+ 
  if (isshaereExpuser())
   return <IsshaereExpuserRoutes />;
     if (isGuest()) return <GuestRoutes />;

@@ -12,7 +12,7 @@ import AddExp from "./Components/AddExp/AddExp"
 
 import {getRoutes} from "./routes"
 function App() {
- 
+
   return (
     <div className="App">
       

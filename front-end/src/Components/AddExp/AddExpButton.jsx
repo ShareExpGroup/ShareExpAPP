@@ -7,7 +7,10 @@ function AddExpButton(props) {
   return (
     
       <Button   style={{color:"white"
-      , marginTop:"10%",height: 50 ,marginLeft:"30%",width:"30%"}} className="button" href="/" type="submit">Add my Experience</Button>
+      , marginTop:"10%",height: 50 
+      ,marginLeft:"30%",width:"30%"}}
+       className="button" href="/"
+        type="submit" onclick={props.fct}>Add my Experience</Button>
  
   );
 }

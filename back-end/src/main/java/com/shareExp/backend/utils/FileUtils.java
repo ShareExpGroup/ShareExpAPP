@@ -10,7 +10,6 @@ import java.nio.file.Paths;
 import java.util.Objects;
 
 @Controller
-
 public class FileUtils {
 
     public static void saveFile(MultipartFile file, String documentPath, String documentName) throws IOException {

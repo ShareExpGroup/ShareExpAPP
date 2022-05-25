@@ -26,7 +26,11 @@ import static com.shareExp.backend.enumeration.Role.CLIENT;
 public class ExperienceService {
     @Autowired
     private ExperienceRepository experienceRepository;
-    private ClientService clientService;
+
+    @Autowired
+    private  ClientService clientService;
+
+
     @Autowired
     private ImageService imageService;
     @PersistenceContext
@@ -42,16 +46,18 @@ public class ExperienceService {
     public ExperienceService() {
     }
 
-    public Experience AddExperience(ExperienceDto experience)
-            throws IOException, NoSuchAlgorithmException {
-        String email =
-                (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        //for testing
-        //ShareExpClient shareExpClient = new ShareExpClient("amina", "chaabane", new Date(2000, 01, 25), "amina.chaabane34@gmail.com", "123");
+    public  Experience AddExperience(ExperienceDto experience)
+            throws IOException, NoSuchAlgorithmException
+    {
+        String email = "admin@gmail.com";
+        //(String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        Experience exp =
-                new Experience(clientService.findByEmail(email), experience.getTitle(), experience.getLike(), experience.getDescription());
-        String img = imageService.uploadExpImage(exp, experience.getImage());
+
+Experience exp =
+        new Experience(clientService.findByEmail(email),experience.getTitle(), 5,experience.getDescription());
+        String img =  imageService.uploadExpImage(exp,experience.getImage());
+        exp.setImage(img);
+        exp.setShareExpClient(clientService.findByEmail(email));
 
         experienceRepository.save(exp);
         return exp;

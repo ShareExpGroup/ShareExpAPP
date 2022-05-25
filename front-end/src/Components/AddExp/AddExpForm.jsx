@@ -42,8 +42,8 @@ function AddExpForm(){
         setDate(newValue);
     };
     const handleSubmit = (event) => {
-
-      addexp(event,setSuccessful,values);
+     console.log("addex");
+      addexp(event,setSuccessful);
     };
     const handleKeyUp = (e) => {
         console.log(e.keyCode);
@@ -70,6 +70,7 @@ function AddExpForm(){
 
  return (
     <ThemeProvider theme={theme}>
+      <Box      noValidate  component="form" onSubmit={handleSubmit} > 
      <div className='back' style={{   height: "665px",
           width: "1000px",
            marginLeft:"20%",marginBottom:"20%"}}>
@@ -78,22 +79,21 @@ function AddExpForm(){
          <Grid item xs={12} sm={6} container >
          <Grid item xs={2} ></Grid>
          <Grid item xs={10} >
-<Box      noValidate  >   
+  
           <TextField
                 margin="normal"
                 color="primary"
                 required
                 fullWidth
-                name="Title"
+                name="title"
                 label="give your experience a title"
                 type="String"
-                id="Title"
+                id="title"
                  color="primary"
-                
-              
                 style={{ marginBottom:"50px", marginTop:"50px"}}
             
             />
+
 
 <FormControl fullWidth>
   <InputLabel id="demo-simple-select-label"  >Category</InputLabel>
@@ -127,7 +127,7 @@ function AddExpForm(){
               <div>Insert a descriptif image</div>
                                 <input class="form-control" type="file" id="image" name="image"
                                        accept="image/*,application/pdf"/>
-             </Box> </Grid>     
+            </Grid>     
           
              </Grid>
       
@@ -140,10 +140,10 @@ function AddExpForm(){
                 color="primary"
                 required
                 fullWidth
-                name="Title"
+                name="description"
                 label="write your experience"
                 type="String"
-                id="Title"
+                id="description"
                
                 multiline
   rows={15}
@@ -161,9 +161,20 @@ function AddExpForm(){
           
          
   </Grid>
-  <AddExpButton/>
+  <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+               style={{backgroundColor:"rgba(175, 81, 197, 1)"}}
+             
+              >
+                test
+              </Button>
+
   </div>
+  </Box>
   </ThemeProvider>
   );
         }
-        export default AddExpForm;
+        export default AddExpForm; //<AddExpButton fct={handleSubmit}/>
