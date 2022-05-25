@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
+import java.util.Map;
 
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private AuthenticationManager authenticationManager;
@@ -53,6 +54,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .sign(Algorithm.HMAC512(JwtProperties.SECRET));
 
         response.setContentType("application/json");
-        response.getOutputStream().write(mapper.writeValueAsBytes(new JwtToken(JwtProperties.TOKEN_PREFIX + jwtToken)));
+        response.getOutputStream().write(mapper.writeValueAsBytes(Map.of(principal.getAuthorities(),new JwtToken(JwtProperties.TOKEN_PREFIX + jwtToken))));
+
+        // response.getOutputStream().write(mapper.writeValueAsBytes(new JwtToken(JwtProperties.TOKEN_PREFIX + jwtToken)));
     }
 }

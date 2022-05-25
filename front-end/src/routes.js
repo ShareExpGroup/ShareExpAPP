@@ -45,8 +45,9 @@ const GuestRoutes = () => useRoutes([
 
 const getRoutes = () => {
     console.log("luser likhdam ");
-    console.log(isshaereExpuser());
-    console.log("luser likhdam ");
+ 
+    console.log(localStorage.getItem("currentUser"))
+ 
  if (isshaereExpuser())
   return <IsshaereExpuserRoutes />;
     if (isGuest()) return <GuestRoutes />;

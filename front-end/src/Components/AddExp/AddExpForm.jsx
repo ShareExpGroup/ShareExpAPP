@@ -167,7 +167,7 @@ function AddExpForm(){
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
                style={{backgroundColor:"rgba(175, 81, 197, 1)"}}
-               onSubmit={handleSubmit}
+             
               >
                 test
               </Button>

@@ -56,7 +56,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/account/delete/**/**").hasRole("SUPERUSER")
         .antMatchers("/comment/s*").permitAll()
                 .antMatchers( "/api/account/list/client/all").permitAll()
-                .antMatchers("/api/exp/add").permitAll();
+                .antMatchers("/api/exp/**").permitAll();
 
                 /*.antMatchers("/api/services/hello").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/api/services/teacher/**").hasAuthority("auth1")

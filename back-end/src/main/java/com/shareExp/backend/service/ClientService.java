@@ -14,6 +14,7 @@ public class ClientService extends UserService<ShareExpClient>{
         this.clientRepository = clientRepository;
     }
  public ShareExpClient findByEmail(String email) {
+
         return userRepository.findByEmail(email).orElse(null);
     }
 }
