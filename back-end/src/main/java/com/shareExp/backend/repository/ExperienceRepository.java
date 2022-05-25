@@ -10,5 +10,6 @@ public interface ExperienceRepository extends JpaRepository<Experience, Long> {
     Optional<List<Experience>> findAllByShareExpClientId(long id);
 
     Optional<List<Experience>> findAllOffersByShareExpClientFirstNameAndShareExpClientLastName(String firstName, String lastName);
-
+    Optional<List<Experience>> findAllByExperienceId(long id);
+    List<Experience> findByCategory(String category);
 }

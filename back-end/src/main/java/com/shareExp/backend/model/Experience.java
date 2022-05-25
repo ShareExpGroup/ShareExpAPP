@@ -1,5 +1,6 @@
 package com.shareExp.backend.model;
 
+import com.shareExp.backend.enumeration.Category;
 import com.sun.istack.Nullable;
 import org.springframework.data.annotation.CreatedDate;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -18,15 +19,16 @@ public class Experience {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_clients")
     @Nullable
     private ShareExpClient shareExpClient;
 
-
+    //TODO : ADD CATEGORY
     @Column(nullable = true, updatable = true)
     private String title;
-
+    @Column(nullable = true, updatable = true)
+    private String image;
 
     public Long getId() {
         return id;
@@ -94,7 +96,10 @@ public class Experience {
     @Column(nullable = true, updatable = true)
     private String description;
     @Column(nullable = true, updatable = true)
-    private String image;
+    @Enumerated(EnumType.STRING)
+    private Category category;
+
+
 
     public Experience(ShareExpClient shareExpClient, String title, int like, String description) {
         this.title = title;
@@ -103,7 +108,7 @@ public class Experience {
         this.shareExpClient=shareExpClient;
     }
 
-    public Experience(Long id, ShareExpClient shareExpClient, String title, Date creationDate, Integer like, String description, String image) {
+    public Experience(Long id, ShareExpClient shareExpClient, String title, Date creationDate, Integer like, String description, String image, Category category ) {
         this.id = id;
         this.shareExpClient = shareExpClient;
         this.title = title;
@@ -111,6 +116,9 @@ public class Experience {
         this.likes = like;
         this.description = description;
         this.image = image;
+        this.category=category;
+
     }
 
 }
+

@@ -1,6 +1,7 @@
 package com.shareExp.backend.model;
 
 
+
 import com.sun.istack.NotNull;
 import com.sun.istack.Nullable;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -10,6 +11,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="comment")
@@ -25,9 +27,9 @@ public class Comment  {
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_clients")
+    @JoinColumn(name = "id_client" ,insertable = false, updatable = false)
     @Nullable
-   private ShareExpClient name;
+    private ShareExpClient name;
 
     @Column(nullable = true, updatable = true)
     private String content;
@@ -36,6 +38,30 @@ public class Comment  {
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
     private Date createdAt;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_client" ,insertable = false, updatable = false)
+    @Nullable
+    private List<Experience> experience;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public List<Experience> getExperience() {
+        return experience;
+    }
+
+    public void setExperience(List<Experience> experience) {
+        this.experience = experience;
+    }
 
     public Comment(ShareExpClient name, String content) {
         this.name = name;

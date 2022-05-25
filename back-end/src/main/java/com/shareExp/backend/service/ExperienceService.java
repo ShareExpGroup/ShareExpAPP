@@ -63,6 +63,9 @@ Experience exp =
         return exp;
 
     }
+    public List<Experience> getExperienceByCategory(String category){
+        return experienceRepository.findByCategory(category);
+    }
 
     public List<ExperienceDto> getAllExperiences() {
         List<Experience> experiences = experienceRepository.findAll();
