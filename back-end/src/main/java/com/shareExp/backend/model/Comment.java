@@ -25,7 +25,7 @@ public class Comment  {
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_client" ,insertable = false, updatable = false)
+    @JoinColumn(name = "id_clients")
     @Nullable
    private ShareExpClient name;
 
