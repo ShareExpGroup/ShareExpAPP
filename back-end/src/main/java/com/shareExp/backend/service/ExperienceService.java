@@ -84,8 +84,6 @@ Experience exp =
         experienceRepository.deleteById(id);
     }
 
-    public List<ExperienceDto> getExpByShareClient(ShareExpClient shareExpClient) {
-
 
     public List<ExpRequestDto> getExpByShareClient(ShareExpClient shareExpClient) {
 
