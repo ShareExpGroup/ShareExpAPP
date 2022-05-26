@@ -25,6 +25,7 @@ public class ExperienceDto implements Serializable {
         this.image = image;
     }
 
+
     public String getTitle() {
         return title;
     }
@@ -45,9 +46,5 @@ public class ExperienceDto implements Serializable {
         this.image = image;
     }
 
-  /*  public ExperienceDto(Experience experience) {
-        this.title = experience.getTitle();
-        this.like = experience.getLikes();
-        this.description = experience.getDescription();
-    }*/
+
 }

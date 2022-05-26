@@ -44,6 +44,29 @@ export function addexp(event, setSuccessful) {
             alert(err.response.data.error + "\nerreur lors de l'ajout de l'offre, veuillez reentrer vos données, en cas de besoin contacter l'admin\n" );
             console.error(err);
         }
+    );       
+}
+
+ 
+export function getPopularExperiences( setExperiences){//
+    axios.get(`http://localhost:8080/api/exp/Popular`
+        , {
+            headers: {
+                "Authorization": `${localStorage.getItem("currentUser")}`
+            }
+        }
+    ).then(
+        async (res) => {
+
+            console.log("res");
+            console.log(res.data);
+            setExperiences({data: res.data});
+
+        }
+        ,
+        (err) => {
+            alert("erreur lors de l'acces à vos données, en cas de besoin contacter l'admin");
+            console.error(err);
+        }
     );
 }
-    

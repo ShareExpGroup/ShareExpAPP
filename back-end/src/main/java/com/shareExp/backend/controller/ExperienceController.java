@@ -1,5 +1,6 @@
 package com.shareExp.backend.controller;
 
+import com.shareExp.backend.DTO.ExpRequestDto;
 import com.shareExp.backend.DTO.ExperienceDto;
 import com.shareExp.backend.model.Experience;
 import com.shareExp.backend.model.ShareExpClient;
@@ -49,6 +50,7 @@ public class ExperienceController {
     public void deleteExperience(@PathVariable long id){
         experienceService.deleteExperience(id);
     }
+    /*
     //to be tested
     /*
     @PostMapping(path = "/search/byClient",
@@ -61,4 +63,23 @@ public class ExperienceController {
                 HttpStatus.OK
         );
     }*/
+
+    @GetMapping(path = "/Popular")
+    public ResponseEntity<List<ExpRequestDto>> getPopularExperiences(){
+        List<ExpRequestDto> experiences = experienceService.getPopularExperiences(50);
+        return new ResponseEntity<>(
+                experiences,
+                HttpStatus.OK
+        );
+    }
+
+    @GetMapping (path = "/{id}",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ExpRequestDto> getOfferById(@PathVariable long id){
+        return new ResponseEntity<>(
+                experienceService.getExpById(id),
+                HttpStatus.OK
+        );
+    }
+
 }
