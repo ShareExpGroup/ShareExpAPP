@@ -1,7 +1,7 @@
 import axios from "axios";
 import {goto} from "./utils";
 
-export function addexp(event, setSuccessful) {
+export function addcateg(event, setSuccessful) {
   
     event.preventDefault();
     const tempData = new FormData(event.currentTarget);
@@ -9,29 +9,27 @@ export function addexp(event, setSuccessful) {
         console.log(i);
     let data =  new FormData();
   
-    data.append('title', tempData.get('title'));
-    data.append('like', 4);
-    data.append('description', tempData.get('description'));
+    data.append('name', tempData.get('name'));
+ 
     data.append('image', tempData.get('image'));
-    console.log( tempData.get('description'))
-    console.log(  tempData.get('title'))
+    console.log( tempData.get('name'))
+  
     console.log( tempData.get('image'))
-    console.log(  tempData.get('like'))
+   
 
     console.log(data);
-/*   private final String title;
-    private final int like;
-    private final String description;
-    MultipartFile image;*/
+
     console.log("the current user")
 
     console.log(localStorage.getItem("currentUser"))
 
-    axios.post(`http://localhost:8080/api/exp/add`, data
+    axios.post(`http://localhost:8080/api/categ/add`, data
     , {
         headers: {
             "Authorization": `${localStorage.getItem("currentUser")}`
         }} 
+    
+         
     ).then(
         (res) => {
 
@@ -47,3 +45,22 @@ export function addexp(event, setSuccessful) {
     );
 }
     
+
+export function getcategories(setCategories){
+    axios.get(`http://localhost:8080/api/categ/all`
+).then(
+        async (res) => {
+
+            console.log("res");
+            console.log(res);
+            setCategories({data: res.data});
+
+            
+        }
+        ,
+        (err) => {
+            alert("erreur lors de l'acces à vos données, en cas de besoin contacter l'admin");
+            console.error(err);
+        }
+    );
+}

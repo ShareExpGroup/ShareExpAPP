@@ -17,7 +17,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @RestController
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:3000")
 
 @RequestMapping("/api/exp")
 public class ExperienceController {
@@ -28,14 +28,15 @@ public class ExperienceController {
     @PostMapping(path = "/add",
             consumes="multipart/form-data",
             produces = MediaType.APPLICATION_JSON_VALUE)
+
     public ResponseEntity<Experience>
-    addOffer(@ModelAttribute ExperienceDto experienceDto )
+    addExp(@ModelAttribute ExperienceDto experienceDto )
             throws IOException, NoSuchAlgorithmException {
         return new ResponseEntity<>(
                 experienceService.AddExperience(experienceDto),
                 HttpStatus.CREATED
         );
-    }
+    }/*
     @GetMapping(path = "/all",
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<ExperienceDto>> getAllExperiences(){
@@ -43,12 +44,13 @@ public class ExperienceController {
                 experienceService.getAllExperiences(),
                 HttpStatus.OK
         );
-    }
+    }*/
     @DeleteMapping(path = "/delete/{id}")
     public void deleteExperience(@PathVariable long id){
         experienceService.deleteExperience(id);
     }
     //to be tested
+    /*
     @PostMapping(path = "/search/byClient",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -58,5 +60,5 @@ public class ExperienceController {
                 offers,
                 HttpStatus.OK
         );
-    }
+    }*/
 }

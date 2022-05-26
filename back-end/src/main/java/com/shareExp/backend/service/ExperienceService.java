@@ -49,8 +49,7 @@ public class ExperienceService {
     public  Experience AddExperience(ExperienceDto experience)
             throws IOException, NoSuchAlgorithmException
     {
-        String email = "admin@gmail.com";
-        //(String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
 
 Experience exp =
@@ -63,18 +62,18 @@ Experience exp =
         return exp;
 
     }
-
+/*
     public List<ExperienceDto> getAllExperiences() {
         List<Experience> experiences = experienceRepository.findAll();
         return experiences.stream().map(ExperienceDto::new).collect(Collectors.toList());
-    }
+    }*/
 
     public void deleteExperience(long id) {
         if (id == 0 || !experienceRepository.existsById(id))
             throw new ExperienceNotFoundException(id);
         experienceRepository.deleteById(id);
     }
-
+/*
     public List<ExperienceDto> getExpByShareClient(ShareExpClient shareExpClient) {
 
         if (shareExpClient.getId() != 0) {
@@ -97,5 +96,5 @@ Experience exp =
         public List<ExperienceDto> getExpByShareClient(){
             return getExpByShareClient(clientService.findCurrentClient());
         }
-
+*/
 }

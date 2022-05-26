@@ -2,6 +2,7 @@ package com.shareExp.backend.service;
 
 import com.shareExp.backend.exception.FileNullException;
 import com.shareExp.backend.exception.FileTypeInappropriateException;
+import com.shareExp.backend.model.Category;
 import com.shareExp.backend.model.Experience;
 import com.shareExp.backend.utils.FileConfig;
 import com.shareExp.backend.utils.FileUtils;
@@ -27,6 +28,20 @@ public class ImageService {
             throw new FileTypeInappropriateException(file.getContentType().toLowerCase(),"image","pdf");
         }
         String documentName = MD5.getMD5Hash(offer.getTitle() )+ "." + FileUtils.getExtension(file);
+        String documentPath = fileConfig.getDirectory();
+        FileUtils.saveFile(file,documentPath, documentName);
+        return documentName;
+
+
+
+    }
+
+    public String uploadCategoryImage(Category offer, MultipartFile file) throws IOException, NoSuchAlgorithmException {
+        if (file == null || file.getContentType() == null) throw new FileNullException();
+        if(!file.getContentType().startsWith("image") && !file.getContentType().startsWith("application/pdf")){
+            throw new FileTypeInappropriateException(file.getContentType().toLowerCase(),"image","pdf");
+        }
+        String documentName = MD5.getMD5Hash(offer.getName() )+ "." + FileUtils.getExtension(file);
         String documentPath = fileConfig.getDirectory();
         FileUtils.saveFile(file,documentPath, documentName);
         return documentName;
