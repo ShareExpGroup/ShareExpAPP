@@ -10,12 +10,15 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import Article from './Components/Article/Article';
 import AddExp from "./Components/AddExp/AddExp"
 import { isshaereExpuser,isGuest, isAdmin } from "./service/authentication"
+import AddCategForm from "./Components/AddCategory/AddCategForm"
 
 const IsshaereExpuserRoutes = () => useRoutes([
     {path:"/", element: <Dashboard/>},
     {path:"/article", element: <Article/>},
    
     {path:"/AddExp", element: <AddExp/>},
+    {path:"/AddCateg", element: <AddCategForm/>},
+ 
 
 ]);
 

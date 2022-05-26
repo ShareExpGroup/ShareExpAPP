@@ -44,6 +44,45 @@ public class Experience {
         this.shareExpClient = shareExpClient;
     }
 
+
+    @Column(nullable = true, updatable = true)
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreatedDate
+    private Date creationDate;
+
+    @Column(nullable = true, updatable = true)
+    private Integer likes;
+    @Column(nullable = true, updatable = true)
+    private String description;
+    @Column(nullable = true, updatable = true)
+    private String image;
+
+
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+    @JoinColumn(name = "id_category")
+    @Nullable
+    private Category category;
+
+
+
+    public Experience(ShareExpClient shareExpClient, String title, int like, String description) {
+        this.title = title;
+        this.likes = like;
+        this.description = description;
+        this.shareExpClient=shareExpClient;
+    }
+
+    public Experience(Long id, ShareExpClient shareExpClient, String title, Date creationDate, Integer like, String description, String image) {
+        this.id = id;
+        this.shareExpClient = shareExpClient;
+        this.title = title;
+        this.creationDate = creationDate;
+        this.likes = like;
+        this.description = description;
+        this.image = image;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -82,35 +121,6 @@ public class Experience {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    @Column(nullable = true, updatable = true)
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreatedDate
-    private Date creationDate;
-
-    @Column(nullable = true, updatable = true)
-    private Integer likes;
-    @Column(nullable = true, updatable = true)
-    private String description;
-    @Column(nullable = true, updatable = true)
-    private String image;
-
-    public Experience(ShareExpClient shareExpClient, String title, int like, String description) {
-        this.title = title;
-        this.likes = like;
-        this.description = description;
-        this.shareExpClient=shareExpClient;
-    }
-
-    public Experience(Long id, ShareExpClient shareExpClient, String title, Date creationDate, Integer like, String description, String image) {
-        this.id = id;
-        this.shareExpClient = shareExpClient;
-        this.title = title;
-        this.creationDate = creationDate;
-        this.likes = like;
-        this.description = description;
-        this.image = image;
     }
 
 }

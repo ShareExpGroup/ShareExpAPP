@@ -51,8 +51,7 @@ public class ExperienceService {
     public  Experience AddExperience(ExperienceDto experience)
             throws IOException, NoSuchAlgorithmException
     {
-        String email = "admin@gmail.com";
-        //(String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
 
 Experience exp =
@@ -66,10 +65,18 @@ Experience exp =
 
     }
 
+/*
+    public List<ExperienceDto> getAllExperiences() {
+        List<Experience> experiences = experienceRepository.findAll();
+        return experiences.stream().map(ExperienceDto::new).collect(Collectors.toList());
+    }*/
+
+
     public List<ExpRequestDto> getAllExperiences() {
         List<Experience> experiences = experienceRepository.findAll();
         return experiences.stream().map(ExpRequestDto::new).collect(Collectors.toList());
     }
+
 
     public void deleteExperience(long id) {
         if (id == 0 || !experienceRepository.existsById(id))
@@ -77,7 +84,11 @@ Experience exp =
         experienceRepository.deleteById(id);
     }
 
+    public List<ExperienceDto> getExpByShareClient(ShareExpClient shareExpClient) {
+
+
     public List<ExpRequestDto> getExpByShareClient(ShareExpClient shareExpClient) {
+
 
         if (shareExpClient.getId() != 0) {
             Optional<List<Experience>> offers = experienceRepository.findAllByShareExpClientId(shareExpClient.getId());
@@ -99,6 +110,7 @@ Experience exp =
         public List<ExpRequestDto> getExpByShareClient(){
             return getExpByShareClient(clientService.findCurrentClient());
         }
+
 
         public List<ExpRequestDto> getPopularExperiences(int min_likes){
             Optional<List<Experience>> experiences = experienceRepository.findByLikesGreaterThanEqual(min_likes);
