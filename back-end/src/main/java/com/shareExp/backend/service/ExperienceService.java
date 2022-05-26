@@ -71,6 +71,7 @@ Experience exp =
         return experiences.stream().map(ExperienceDto::new).collect(Collectors.toList());
     }*/
 
+
     public List<ExpRequestDto> getAllExperiences() {
         List<Experience> experiences = experienceRepository.findAll();
         return experiences.stream().map(ExpRequestDto::new).collect(Collectors.toList());
@@ -85,10 +86,16 @@ Experience exp =
 
 /*
     public List<ExperienceDto> getExpByShareClient(ShareExpClient shareExpClient) {
-=======
 
     public List<ExpRequestDto> getExpByShareClient(ShareExpClient shareExpClient) {
->>>>>>> 22e3e7db67f0f384a3e03aa8c12a0e5bd336cbdc
+
+
+    public List<ExperienceDto> getExpByShareClient(ShareExpClient shareExpClient) {
+
+
+    public List<ExpRequestDto> getExpByShareClient(ShareExpClient shareExpClient) {
+
+
 
         if (shareExpClient.getId() != 0) {
             Optional<List<Experience>> offers = experienceRepository.findAllByShareExpClientId(shareExpClient.getId());
@@ -111,6 +118,7 @@ Experience exp =
             return getExpByShareClient(clientService.findCurrentClient());
         }
 
+
 */
 
 
@@ -122,4 +130,5 @@ Experience exp =
     public ExpRequestDto getExpById(long id) {
         return this.experienceRepository.findById(id).map(ExpRequestDto::new).orElseThrow(() -> new ExperienceNotFoundException("422", "offer not found"));
     }
+
 }
