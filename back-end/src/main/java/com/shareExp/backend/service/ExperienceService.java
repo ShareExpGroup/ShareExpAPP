@@ -1,5 +1,6 @@
 package com.shareExp.backend.service;
 
+import com.shareExp.backend.DTO.ExpRequestDto;
 import com.shareExp.backend.DTO.ExperienceDto;
 import com.shareExp.backend.exception.ExperienceNotFoundException;
 import com.shareExp.backend.exception.UserIncompleteDataException;
@@ -9,6 +10,7 @@ import com.shareExp.backend.repository.ExperienceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -62,24 +64,36 @@ Experience exp =
         return exp;
 
     }
+
 /*
     public List<ExperienceDto> getAllExperiences() {
         List<Experience> experiences = experienceRepository.findAll();
         return experiences.stream().map(ExperienceDto::new).collect(Collectors.toList());
     }*/
 
+    public List<ExpRequestDto> getAllExperiences() {
+        List<Experience> experiences = experienceRepository.findAll();
+        return experiences.stream().map(ExpRequestDto::new).collect(Collectors.toList());
+    }
+
+
     public void deleteExperience(long id) {
         if (id == 0 || !experienceRepository.existsById(id))
             throw new ExperienceNotFoundException(id);
         experienceRepository.deleteById(id);
     }
+
 /*
     public List<ExperienceDto> getExpByShareClient(ShareExpClient shareExpClient) {
+=======
+
+    public List<ExpRequestDto> getExpByShareClient(ShareExpClient shareExpClient) {
+>>>>>>> 22e3e7db67f0f384a3e03aa8c12a0e5bd336cbdc
 
         if (shareExpClient.getId() != 0) {
             Optional<List<Experience>> offers = experienceRepository.findAllByShareExpClientId(shareExpClient.getId());
             if (offers.isPresent()) {
-                return offers.get().stream().map(ExperienceDto::new).collect(Collectors.toList());
+                return offers.get().stream().map(ExpRequestDto::new).collect(Collectors.toList());
             }
             return List.of();
         }
@@ -87,14 +101,25 @@ Experience exp =
         if (shareExpClient.getFirstName() != null && shareExpClient.getLastName() != null) {
             Optional<List<Experience>> offers = experienceRepository.findAllOffersByShareExpClientFirstNameAndShareExpClientLastName(shareExpClient.getFirstName(), shareExpClient.getLastName());
             if (offers.isPresent()) {
-                return offers.get().stream().map(ExperienceDto::new).collect(Collectors.toList());
+                return offers.get().stream().map(ExpRequestDto::new).collect(Collectors.toList());
             }
             return List.of();
         }
         throw new UserIncompleteDataException("coach's id or full_name");
     }
-        public List<ExperienceDto> getExpByShareClient(){
+        public List<ExpRequestDto> getExpByShareClient(){
             return getExpByShareClient(clientService.findCurrentClient());
         }
+
 */
+
+
+        public List<ExpRequestDto> getPopularExperiences(int min_likes){
+            Optional<List<Experience>> experiences = experienceRepository.findByLikesGreaterThanEqual(min_likes);
+            return experiences.get().stream().map(ExpRequestDto::new).collect(Collectors.toList());
+        }
+
+    public ExpRequestDto getExpById(long id) {
+        return this.experienceRepository.findById(id).map(ExpRequestDto::new).orElseThrow(() -> new ExperienceNotFoundException("422", "offer not found"));
+    }
 }
