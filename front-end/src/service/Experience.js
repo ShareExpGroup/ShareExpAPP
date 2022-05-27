@@ -50,16 +50,11 @@ export function addexp(event, setSuccessful) {
  
 export function getPopularExperiences( setExperiences){//
     axios.get(`http://localhost:8080/api/exp/Popular`
-        , {
-            headers: {
-                "Authorization": `${localStorage.getItem("currentUser")}`
-            }
-        }
     ).then(
         async (res) => {
 
             console.log("res");
-            console.log(res.data);
+            console.log(res);
             setExperiences({data: res.data});
 
         }

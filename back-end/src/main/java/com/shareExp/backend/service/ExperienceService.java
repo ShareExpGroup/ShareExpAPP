@@ -109,8 +109,7 @@ Experience exp =
             return getExpByShareClient(clientService.findCurrentClient());
         }
 
-
-        public List<ExpRequestDto> getPopularExperiences(int min_likes){
+        public List<ExpRequestDto> getPopularExperiences(Integer min_likes){
             Optional<List<Experience>> experiences = experienceRepository.findByLikesGreaterThanEqual(min_likes);
             return experiences.get().stream().map(ExpRequestDto::new).collect(Collectors.toList());
         }

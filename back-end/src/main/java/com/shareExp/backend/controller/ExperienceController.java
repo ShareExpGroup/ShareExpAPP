@@ -66,13 +66,12 @@ public class ExperienceController {
 
     @GetMapping(path = "/Popular")
     public ResponseEntity<List<ExpRequestDto>> getPopularExperiences(){
-        List<ExpRequestDto> experiences = experienceService.getPopularExperiences(50);
+        List<ExpRequestDto> experiences = experienceService.getPopularExperiences(5);
         return new ResponseEntity<>(
                 experiences,
                 HttpStatus.OK
         );
     }
-
     @GetMapping (path = "/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ExpRequestDto> getOfferById(@PathVariable long id){

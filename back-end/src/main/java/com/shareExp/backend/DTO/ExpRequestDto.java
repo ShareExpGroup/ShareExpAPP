@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class ExpRequestDto implements Serializable {
     Long id;
     private final String title;
-    private final int like;
+    private final int likes;
     private final String description;
     ShareExpClientDto shareExpClientDto;
     String image;
@@ -17,7 +17,7 @@ public class ExpRequestDto implements Serializable {
     public ExpRequestDto(Experience exp){
         this.id = exp.getId();
         this.title = exp.getTitle();
-        this.like = exp.getLikes();
+        this.likes = exp.getLikes();
         this.description= exp.getDescription();
         this.image= exp.getImage();
 
