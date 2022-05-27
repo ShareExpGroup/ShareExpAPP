@@ -36,7 +36,7 @@ function AddExpForm(){
            marginLeft:"20%"}}*/
 
            const [date, setDate] = React.useState(Date.now());
-    const [values, setValues] = useState([]);
+    const [values, setValues] = useState("");
     const [currValue, setCurrValue] = useState("");
     const [successful, setSuccessful] = useState(false);
     const handleChange = (newValue) => {
@@ -85,13 +85,17 @@ function AddExpForm(){
 
 
 <FormControl fullWidth>
-  <InputLabel id="demo-simple-select-label"  >Category</InputLabel>
+  <InputLabel id="Categoryall"  >Category</InputLabel>
   <Select
-    labelId="demo-simple-select-label"
-    id="demo-simple-select"
+    labelId="category"
+    id="category"
 
     label="Age"
     style={{ marginBottom:"50px"}}
+    value={values}
+    onChange={(e)=>{setValues(e.target.value)
+    console.log(values);}
+  }
     
   >
   {courses.data.map((card) => {
@@ -153,16 +157,9 @@ function AddExpForm(){
           
          
   </Grid>
-  <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-               style={{backgroundColor:"rgba(175, 81, 197, 1)"}}
-             
-              >
-                test
-              </Button>
+
+  <AddExpButton/>
+ 
 
   </div>
   </Box>

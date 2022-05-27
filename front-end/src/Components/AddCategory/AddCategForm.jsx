@@ -86,10 +86,10 @@ function AddCategForm(){
                 required
                 fullWidth
                 name="name"
-                label="give your experience a title"
+                label="give the new category"
                 type="String"
                 id="name"
-                 color="primary"
+                
                 style={{ marginBottom:"50px", marginTop:"50px"}}
             
             />
