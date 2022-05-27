@@ -84,6 +84,16 @@ public class Experience {
         this.image = image;
     }
 
+    public Experience(Experience experience){
+        this.id = experience.getId();
+        this.shareExpClient = experience.getShareExpClient();
+        this.title = title;
+        this.creationDate = experience.getCreationDate();
+        this.likes = experience.getLikes();
+        this.description = experience.getDescription();
+        this.image = experience.getImage();
+    }
+
     public String getTitle() {
         return title;
     }

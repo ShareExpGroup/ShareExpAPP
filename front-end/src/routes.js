@@ -14,7 +14,7 @@ import AddCategForm from "./Components/AddCategory/AddCategForm"
 
 const IsshaereExpuserRoutes = () => useRoutes([
     {path:"/", element: <Dashboard/>},
-    {path:"/article", element: <Article/>},
+    {path:"/experience/:id", element: <Article/>},
    
     {path:"/AddExp", element: <AddExp/>},
     {path:"/AddCateg", element: <AddCategForm/>},
@@ -27,7 +27,7 @@ const AdminRoutes = () => useRoutes([
     {path: "/signin", element: <SignIn/>},
     {path:"/signup", element: <SignUp/>},
     {path:"/dashboard", element: <Dashboard/>},
-    {path:"/article", element: <Article/>},
+    {path:"/experience/:id", element: <Article/>},
    
     {path:"/AddExp", element: <AddExp/>},
 

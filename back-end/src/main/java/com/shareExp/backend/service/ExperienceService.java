@@ -109,10 +109,11 @@ public class ExperienceService {
         return getExpByShareClient(clientService.findCurrentClient());
     }
 
-    public List<ExpRequestDto> getPopularExperiences(Integer min_likes){
-        Optional<List<Experience>> experiences = experienceRepository.findByLikesGreaterThanEqual(min_likes);
-        return experiences.get().stream().map(ExpRequestDto::new).collect(Collectors.toList());
-    }
+        public List<ExpRequestDto> getPopularExperiences(Integer min_likes){
+            Optional<List<Experience>> experiences = experienceRepository.findByLikesGreaterThanEqual(min_likes);
+            return experiences.get().stream().map(ExpRequestDto::new).collect(Collectors.toList());
+        }
+
 
     public ExpRequestDto getExpById(long id) {
         return this.experienceRepository.findById(id).map(ExpRequestDto::new).orElseThrow(() -> new ExperienceNotFoundException("422", "offer not found"));

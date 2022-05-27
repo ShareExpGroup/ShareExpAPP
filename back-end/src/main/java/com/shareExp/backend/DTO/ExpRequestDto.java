@@ -24,6 +24,7 @@ public class ExpRequestDto implements Serializable {
         this.description= exp.getDescription();
         this.image= exp.getImage();
         this.creationDate = exp.getCreationDate();
+        this.shareExpClientDto = new ShareExpClientDto(exp.getShareExpClient().getId(), exp.getShareExpClient().getFirstName(), exp.getShareExpClient().getLastName());
 
     }
 
