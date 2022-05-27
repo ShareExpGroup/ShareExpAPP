@@ -10,26 +10,26 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import Article from './Components/Article/Article';
 import AddExp from "./Components/AddExp/AddExp"
 import { isshaereExpuser,isGuest, isAdmin } from "./service/authentication"
-import AddCategForm from "./Components/AddCategory/AddCategForm"
+import AddCateg from "./Components/AddCategory/AddCateg"
+import ListCoach from "./Components/Admin/ListCoach"
+import DashbordAdmin from "./Components/Admin/DashboardAdmin/DashbordAdmin"
 
 const IsshaereExpuserRoutes = () => useRoutes([
     {path:"/", element: <Dashboard/>},
     {path:"/article", element: <Article/>},
    
     {path:"/AddExp", element: <AddExp/>},
-    {path:"/AddCateg", element: <AddCategForm/>},
- 
+    {path:"/AddCateg", element: <AddCateg/>},
+    {path:"/ListUsers", element: <ListCoach/>},
+    {path:"/DashbordAdmin", element: <DashbordAdmin/>},
+
 
 ]);
 
 const AdminRoutes = () => useRoutes([
-    {path: "/", element: <Home/>},
-    {path: "/signin", element: <SignIn/>},
-    {path:"/signup", element: <SignUp/>},
-    {path:"/dashboard", element: <Dashboard/>},
-    {path:"/article", element: <Article/>},
-   
-    {path:"/AddExp", element: <AddExp/>},
+    {path:"/AddCateg", element: <AddCateg/>},
+    {path:"/ListUsers", element: <ListCoach/>},
+    {path:"/", element: <DashbordAdmin/>},
 
 
 ]);

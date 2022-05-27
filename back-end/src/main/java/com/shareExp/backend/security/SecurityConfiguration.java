@@ -53,11 +53,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/account/create/**").permitAll()
                 .antMatchers("/api/account/delete").authenticated()
                 .antMatchers("/api/account/changePassword").authenticated()
-                .antMatchers("/api/account/delete/**/**").hasRole("SUPERUSER")
+
         .antMatchers("/comment/s*").permitAll()
                 .antMatchers( "/api/account/list/client/all").permitAll()
                 .antMatchers("/api/exp/**").permitAll()
-        .antMatchers("/api/categ/**").permitAll();
+        .antMatchers("/api/categ/**").permitAll()
+                .antMatchers("/api/superuser/**").permitAll()
+                .antMatchers("/api/account/delete/**").permitAll();
+
+
 
 
                 /*.antMatchers("/api/services/hello").hasAnyRole("USER", "ADMIN")
