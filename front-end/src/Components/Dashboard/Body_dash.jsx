@@ -135,7 +135,7 @@ const Body_dash = () => {
                                     color: "#ABB5BE",
                                     fontSize: "13px"
                                 }}>
-                                    {experience.title}
+                                    {experience.creationDate}
                                 </Typography>
                             </CardActions>
                         </Card>

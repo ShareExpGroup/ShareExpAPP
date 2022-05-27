@@ -5,6 +5,8 @@ import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.Serializable;
+import java.util.Date;
+
 @Data
 public class ExpRequestDto implements Serializable {
     Long id;
@@ -13,6 +15,7 @@ public class ExpRequestDto implements Serializable {
     private final String description;
     ShareExpClientDto shareExpClientDto;
     String image;
+    Date creationDate;
 
     public ExpRequestDto(Experience exp){
         this.id = exp.getId();
@@ -20,6 +23,7 @@ public class ExpRequestDto implements Serializable {
         this.likes = exp.getLikes();
         this.description= exp.getDescription();
         this.image= exp.getImage();
+        this.creationDate = exp.getCreationDate();
 
     }
 
