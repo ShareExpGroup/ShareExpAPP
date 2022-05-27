@@ -32,7 +32,7 @@ public class CommentController {
     }
 
 
-    @PostMapping("/comments")
+    @PostMapping("/create")
     public ResponseEntity<Comment>
     createComment(@RequestBody CommentDto comment) {
        return new ResponseEntity<>(

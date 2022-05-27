@@ -1,5 +1,6 @@
 package com.shareExp.backend.DTO;
 
+import com.shareExp.backend.model.Experience;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -7,6 +8,7 @@ import java.util.Objects;
 @Data
 public class CommentDto implements Serializable {
    ShareExpClientDto shareExpClientDto;
+   Experience experience;
     private final String content;
 
     public ShareExpClientDto getShareExpClientDto() {
@@ -17,9 +19,10 @@ public class CommentDto implements Serializable {
         this.shareExpClientDto = shareExpClientDto;
     }
 
-    public CommentDto(String content, ShareExpClientDto shareExpClientDto ) {
+    public CommentDto(String content, Experience experience, ShareExpClientDto shareExpClientDto) {
         this.content = content;
-        this.shareExpClientDto=shareExpClientDto;
+        this.experience = experience;
+        this.shareExpClientDto= shareExpClientDto;
     }
 
     public String getContent() {
