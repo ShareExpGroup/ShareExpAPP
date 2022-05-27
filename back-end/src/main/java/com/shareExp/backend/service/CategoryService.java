@@ -5,6 +5,7 @@ import com.shareExp.backend.DTO.CategoryDto;
 import com.shareExp.backend.DTO.ExperienceDto;
 import com.shareExp.backend.model.Category;
 import com.shareExp.backend.model.Experience;
+import com.shareExp.backend.model.ShareExpClient;
 import com.shareExp.backend.repository.CategoryRepository;
 import com.shareExp.backend.repository.ExperienceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,5 +50,10 @@ public class CategoryService {
     public List<CatDTO> getAllOffers() {
         List<Category> categories =  categoryRepository.findAll();
         return categories.stream().map(CatDTO::new).collect(Collectors.toList());
+    }
+
+    public Category findByName(String name) {
+
+        return categoryRepository.findByName(name).orElse(null);
     }
 }

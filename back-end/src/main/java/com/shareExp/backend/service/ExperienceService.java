@@ -35,6 +35,8 @@ public class ExperienceService {
 
     @Autowired
     private ImageService imageService;
+    @Autowired
+    private CategoryService categoryService;
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -59,8 +61,8 @@ public class ExperienceService {
         String img =  imageService.uploadExpImage(exp,experience.getImage());
         exp.setImage(img);
         exp.setShareExpClient(clientService.findByEmail(email));
-
-        experienceRepository.save(exp);
+      exp.setCategory(categoryService.findByName(experience.getCategory()));
+ experienceRepository.save(exp);
         return exp;
 
     }

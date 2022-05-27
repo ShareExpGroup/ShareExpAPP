@@ -16,8 +16,7 @@ import DashbordAdmin from "./Components/Admin/DashboardAdmin/DashbordAdmin"
 
 const IsshaereExpuserRoutes = () => useRoutes([
     {path:"/", element: <Dashboard/>},
-    {path:"/article", element: <Article/>},
-   
+    {path:"/experience/:id", element: <Article/>},
     {path:"/AddExp", element: <AddExp/>},
     {path:"/AddCateg", element: <AddCateg/>},
     {path:"/ListUsers", element: <ListCoach/>},

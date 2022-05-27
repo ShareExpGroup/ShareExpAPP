@@ -1,7 +1,7 @@
 import axios from "axios";
 import {goto} from "./utils";
 
-export function addexp(event, setSuccessful) {
+export function addexp(event, setSuccessful,value) {
   console.log("hanadkhlt")
     event.preventDefault();
     const tempData = new FormData(event.currentTarget);
@@ -12,13 +12,16 @@ export function addexp(event, setSuccessful) {
     data.append('title', tempData.get('title'));
     data.append('like', 4);
     data.append('description', tempData.get('description'));
-    data.append('image', tempData.get('image'));
-    console.log("hado les valeurs")
-    console.log( tempData.get('description'))
-    console.log(  tempData.get('title'))
-    console.log( tempData.get('image'))
-    console.log(  tempData.get('like'))
+    data.append('image', tempData.get('image'))
+    data.append('category', value)
     
+    ;
+    console.log("hado les valeurs")
+    console.log( data.get('description'))
+    console.log(  data.get('title'))
+    console.log( data.get('image'))
+    console.log(  data.get('like'))
+    console.log(  tempData.get('category'))
     console.log("*******************");
 
     console.log(data);
