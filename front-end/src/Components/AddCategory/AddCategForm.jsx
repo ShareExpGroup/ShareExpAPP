@@ -108,7 +108,12 @@ function AddCategForm(){
           
          
   </Grid>
-  <AddExpButton/>
+  <Button      type="submit"  style={{color:"white"
+      , marginTop:"10%",height: 50 
+      ,marginLeft:"30%",width:"30%"}}
+       className="button" 
+      >Add Category</Button>
+
 
   </div>
   </Box>
