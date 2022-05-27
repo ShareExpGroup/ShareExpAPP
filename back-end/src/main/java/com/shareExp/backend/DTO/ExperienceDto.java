@@ -18,13 +18,22 @@ public class ExperienceDto implements Serializable {
     @NotNull(message = "Description is required")
     private final String description;
     MultipartFile image;
+private String category;
 
+    public String getCategory() {
+        return category;
+    }
 
-    public ExperienceDto(String title, int like, String description, MultipartFile image) {
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public ExperienceDto(String title, int like, String description, MultipartFile image, String category) {
         this.title = title;
         this.like = like;
         this.description = description;
         this.image = image;
+        this.category=category;
     }
 
     public String getTitle() {

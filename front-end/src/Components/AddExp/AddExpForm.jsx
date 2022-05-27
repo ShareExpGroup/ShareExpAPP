@@ -20,6 +20,10 @@ import {useEffect, useState} from "react";
 import {addexp} from "../../service/Experience"
 import {getcategories} from "../../service/Category"
 function AddExpForm(){
+
+  const [position, setPosition] = useState(0);
+
+
     const theme = createTheme({
         palette: {
             primary: {
@@ -39,12 +43,17 @@ function AddExpForm(){
     const [values, setValues] = useState("");
     const [currValue, setCurrValue] = useState("");
     const [successful, setSuccessful] = useState(false);
-    const handleChange = (newValue) => {
-        setDate(newValue);
+    const handleChange = (event,child) => {
+
+       console.log("hahyaa tbkhdekqgfqgg hhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
+        setValues(event.target.value);
+        console.log(event.target.value);
     };
+
+
     const handleSubmit = (event) => {
      console.log("addex");
-      addexp(event,setSuccessful);
+      addexp(event,setSuccessful,values);
     };
  
 
@@ -85,22 +94,26 @@ function AddExpForm(){
 
 
 <FormControl fullWidth>
-  <InputLabel id="Categoryall"  >Category</InputLabel>
-  <Select
-    labelId="category"
-    id="category"
+  <InputLabel id="Categoryall"  ></InputLabel>
 
-    label="Age"
-    style={{ marginBottom:"50px"}}
-    value={values}
-    onChange={(e)=>{setValues(e.target.value)
-    console.log(values);}
-  }
-    
-  >
+  <Select
+          labelId="category"
+          id="category"
+          value={values}
+          label={values ? "category" : ""} //This tells Select to have gap in border
+          onChange={handleChange}
+          displayEmpty
+          renderValue={(value) => value ? value : <em>category</em>}
+          MenuProps={{
+            PaperProps: {sx: {left: `${position}px !important`}}
+            
+          }}
+          style={{ marginBottom:"50px", marginTop:"30px"}}
+        >
+
   {courses.data.map((card) => {
    console.log(card);
-    return  <MenuItem value={10}>{card.name}</MenuItem>
+    return  <MenuItem value={card.name} name={card.name}>{card.name}</MenuItem>
   }
    ) }
 
