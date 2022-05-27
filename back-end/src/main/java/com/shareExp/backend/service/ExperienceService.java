@@ -54,8 +54,8 @@ public class ExperienceService {
         String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
 
-Experience exp =
-        new Experience(clientService.findByEmail(email),experience.getTitle(), 5,experience.getDescription());
+        Experience exp =
+                new Experience(clientService.findByEmail(email),experience.getTitle(), 5,experience.getDescription());
         String img =  imageService.uploadExpImage(exp,experience.getImage());
         exp.setImage(img);
         exp.setShareExpClient(clientService.findByEmail(email));
@@ -84,17 +84,8 @@ Experience exp =
         experienceRepository.deleteById(id);
     }
 
-/*
-    public List<ExperienceDto> getExpByShareClient(ShareExpClient shareExpClient) {
 
     public List<ExpRequestDto> getExpByShareClient(ShareExpClient shareExpClient) {
-
-
-    public List<ExperienceDto> getExpByShareClient(ShareExpClient shareExpClient) {
-
-
-    public List<ExpRequestDto> getExpByShareClient(ShareExpClient shareExpClient) {
-
 
 
         if (shareExpClient.getId() != 0) {
@@ -114,18 +105,14 @@ Experience exp =
         }
         throw new UserIncompleteDataException("coach's id or full_name");
     }
-        public List<ExpRequestDto> getExpByShareClient(){
-            return getExpByShareClient(clientService.findCurrentClient());
-        }
+    public List<ExpRequestDto> getExpByShareClient(){
+        return getExpByShareClient(clientService.findCurrentClient());
+    }
 
-
-*/
-
-
-        public List<ExpRequestDto> getPopularExperiences(int min_likes){
-            Optional<List<Experience>> experiences = experienceRepository.findByLikesGreaterThanEqual(min_likes);
-            return experiences.get().stream().map(ExpRequestDto::new).collect(Collectors.toList());
-        }
+    public List<ExpRequestDto> getPopularExperiences(Integer min_likes){
+        Optional<List<Experience>> experiences = experienceRepository.findByLikesGreaterThanEqual(min_likes);
+        return experiences.get().stream().map(ExpRequestDto::new).collect(Collectors.toList());
+    }
 
     public ExpRequestDto getExpById(long id) {
         return this.experienceRepository.findById(id).map(ExpRequestDto::new).orElseThrow(() -> new ExperienceNotFoundException("422", "offer not found"));

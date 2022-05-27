@@ -1,6 +1,7 @@
 package com.shareExp.backend.model;
 
 import com.sun.istack.Nullable;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
@@ -47,7 +48,7 @@ public class Experience {
 
     @Column(nullable = true, updatable = true)
     @Temporal(TemporalType.TIMESTAMP)
-    @CreatedDate
+    @CreationTimestamp
     private Date creationDate;
 
     @Column(nullable = true, updatable = true)

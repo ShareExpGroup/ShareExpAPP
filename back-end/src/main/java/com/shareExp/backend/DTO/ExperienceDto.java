@@ -1,11 +1,13 @@
 package com.shareExp.backend.DTO;
 
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.Date;
 
 @Data
 public class ExperienceDto implements Serializable {
