@@ -20,8 +20,8 @@ public class CommentService {
 
     public Comment AddComment(CommentDto commentDto){
         //for testing
-        //String email = "amina.chaabane34@gmail.com";
-        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String email = "amina.chaabane34@gmail.com";
+       // String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Comment comment=new Comment(clientService.findByEmail(email),
                 commentDto.getContent());
         commentRepository.save(comment);
