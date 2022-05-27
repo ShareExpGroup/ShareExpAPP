@@ -2,21 +2,24 @@ import axios from "axios";
 import {goto} from "./utils";
 
 export function addexp(event, setSuccessful) {
-  
+  console.log("hanadkhlt")
     event.preventDefault();
     const tempData = new FormData(event.currentTarget);
     for (let i of tempData.entries())
         console.log(i);
     let data =  new FormData();
-  
+   
     data.append('title', tempData.get('title'));
     data.append('like', 4);
     data.append('description', tempData.get('description'));
     data.append('image', tempData.get('image'));
+    console.log("hado les valeurs")
     console.log( tempData.get('description'))
     console.log(  tempData.get('title'))
     console.log( tempData.get('image'))
     console.log(  tempData.get('like'))
+    
+    console.log("*******************");
 
     console.log(data);
 /*   private final String title;
@@ -37,6 +40,7 @@ export function addexp(event, setSuccessful) {
 
             setSuccessful(true);
             console.log(res);
+            
             goto("/");
         }
         ,

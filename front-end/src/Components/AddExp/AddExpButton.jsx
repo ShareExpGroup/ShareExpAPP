@@ -10,8 +10,19 @@ function AddExpButton(props) {
       , marginTop:"10%",height: 50 
       ,marginLeft:"30%",width:"30%"}}
        className="button" href="/"
-        type="submit" onclick={props.fct}>Add my Experience</Button>
+        type="submit" >Add my Experience</Button>
  
   );
 }
 export default AddExpButton;
+/*
+  <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+               style={{backgroundColor:"rgba(175, 81, 197, 1)"}}
+
+              >
+                test
+              </Button>*/

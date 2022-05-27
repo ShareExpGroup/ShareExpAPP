@@ -157,8 +157,12 @@ function AddExpForm(){
           
          
   </Grid>
+  <Button      type="submit"  style={{color:"white"
+      , marginTop:"10%",height: 50 
+      ,marginLeft:"30%",width:"30%"}}
+       className="button" 
+      >Add my Experience</Button>
 
-  <AddExpButton/>
  
 
   </div>
