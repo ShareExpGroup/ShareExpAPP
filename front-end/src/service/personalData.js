@@ -31,7 +31,7 @@ export function getCoachData(setReceived, setFullName, setImage, setEmail, setSp
 export function getAllCoaches(setCoaches, createData, setSuccess){
     // alert("hh")
     console.log("hello")
-    axios.get(`http://localhost:8000/api/superuser/listNotVerified`
+    axios.get(`http://localhost:8080/api/superuser/listNotVerified`
         , {
             headers: {
                 "Authorization": `${localStorage.getItem("currentUser")}`
@@ -43,19 +43,17 @@ export function getAllCoaches(setCoaches, createData, setSuccess){
             for (let i of res.data){
                 temp.push(
                     createData(
-                        i.nom_coach,
-                        <a href={"http://localhost:8000/api/document/" + i.image}>cliquer ici</a>,
-                        <a href={"http://localhost:8000/api/document/" + i.cin}>cliquer ici</a>,
-                        <a href={"http://localhost:8000/api/document/" + i.certificate}>cliquer ici</a>,
-                        i.id_coach
+                        i.firstName,
+                      i.lastName,
+                        i.email
                     )
                 );
             }
             setCoaches(temp);
             setSuccess(true);
-            console.log(res.data);
-            // alert("hh");
-            // goto("/this_link_is_not_yet_defined");
+            console.log("hado les données")
+            console.log(res.data.firstName);
+           
         }
         ,
         (err) => {
@@ -64,12 +62,12 @@ export function getAllCoaches(setCoaches, createData, setSuccess){
         }
     );
 }
-export function verifyCoach(id){
-    axios.get(`http://localhost:8000/api/superuser/verifyCoach`
+export function verifyCoach(email){
+    axios.delete(`http://localhost:8080/api/account/delete/ByEmail`
         , {
             headers: {
                 "Authorization": `${localStorage.getItem("currentUser")}`,
-                "coach_id": id
+                "email": email
             }
         }
     ).then(

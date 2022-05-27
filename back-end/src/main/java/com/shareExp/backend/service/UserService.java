@@ -71,6 +71,7 @@ public class UserService<T extends User> {
 
     public void deleteUserWithEmail(String email) {
         T user = getUserWithEmail(email);
+
         userRepository.deleteById(user.getId());
     }
 

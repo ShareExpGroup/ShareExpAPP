@@ -71,7 +71,7 @@ function AddCategForm(){
  return (
     <ThemeProvider theme={theme}>
       <Box      noValidate  component="form" onSubmit={handleSubmit} > 
-     <div className='back' style={{   height: "665px",
+     <div className='back' style={{   height: "265px",
           width: "1000px",
            marginLeft:"20%",marginBottom:"20%"}}>
 <Grid container >
@@ -98,7 +98,7 @@ function AddCategForm(){
 
               <div>Insert a descriptif image</div>
                                 <input class="form-control" type="file" id="image" name="image"
-                                       accept="image/*,application/pdf"/>
+                                       accept="image/*,application/pdf"   style={{color:"#D946EF",backgroundColor:"black"}}/>
             </Grid>     
           
              </Grid>
@@ -108,16 +108,7 @@ function AddCategForm(){
           
          
   </Grid>
-  <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-               style={{backgroundColor:"rgba(175, 81, 197, 1)"}}
-             
-              >
-                test
-              </Button>
+  <AddExpButton/>
 
   </div>
   </Box>
