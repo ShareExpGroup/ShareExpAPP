@@ -7,16 +7,20 @@ import HorizontalScroll from 'react-scroll-horizontal';
 import { CardActionArea, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
 import {useEffect, useState} from "react";
 import {getcategories} from "../../service/Category"
-
+import {getPopularExperiences} from "../../service/Experience"
 const Body_dash = () => {
     let [categories, setCategories] = useState({data: []});
+    let [experiences, setExperiences] = useState({data: []});
     useEffect(() => {
        console.log("ana dkhlt")
             if (categories.data.length===0)
                 getcategories(setCategories);
+            if (experiences.data.length===0)
+                getPopularExperiences(setExperiences);
         
     }, []);
-    
+
+    /*
     const articles = [
         {
             title: "title1",
@@ -43,7 +47,7 @@ const Body_dash = () => {
             date: "February 19, 2020"
         }
         
-    ]
+    ]*/
     return (
         <Grid
             container
@@ -98,9 +102,9 @@ const Body_dash = () => {
                     fontFamily: 'Fira Sans Condensed',
                     color: "#AF51C5",
                     marginTop: "30%"
-                }}>Popular Articles</h1>
+                }}>Popular Experiences</h1>
                 <HorizontalScroll>
-                    {articles.map((article) =>(
+                    {experiences.data.map((experience) =>(
                         <Card sx={{ maxWidth: 345 }} style={{
                             backgroundColor: "black", 
                             color: "white",
@@ -114,15 +118,15 @@ const Body_dash = () => {
                                 <CardMedia 
                                 component="img"
                                 height="150"
-                                image={article.image}
+                                image={"http://localhost:8080/api/document/" + experience.image}
                                 alt="green iguana"
                                 />
                                 <CardContent>
                                 <Typography gutterBottom variant="h4" component="div" style={{color: "#2563EB"}}>
-                                    {article.title}
+                                    {experience.title}
                                 </Typography>
                                 <Typography variant="body2">
-                                    {article.description}
+                                    {experience.description}
                                 </Typography>
                                 </CardContent>
                             </CardActionArea>
@@ -131,7 +135,7 @@ const Body_dash = () => {
                                     color: "#ABB5BE",
                                     fontSize: "13px"
                                 }}>
-                                    {article.date}
+                                    {experience.title}
                                 </Typography>
                             </CardActions>
                         </Card>
