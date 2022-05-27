@@ -65,3 +65,20 @@ export function getPopularExperiences( setExperiences){//
         }
     );
 }
+
+export function getExperienceById(id, setExperience){//
+    console.log("id :  ",id);
+    axios.get(`http://localhost:8080/api/exp/${id}`
+    ).then(
+        async (res) => {
+            setExperience({data: res.data});
+            console.log(res.data);
+            console.log(res.data.shareExpClientDto)
+        }
+        ,
+        (err) => {
+            alert("erreur lors du demande des ressources, en cas de besoin contacter l'admin");
+            console.error(err);
+        }
+    );
+}

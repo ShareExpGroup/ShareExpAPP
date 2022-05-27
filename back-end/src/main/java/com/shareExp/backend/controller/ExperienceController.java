@@ -72,9 +72,19 @@ public class ExperienceController {
                 HttpStatus.OK
         );
     }
+/*
+    @GetMapping(path = "/Popular")
+    public ResponseEntity<List<Experience>> getPopularExperiences(){
+        List<Experience> experiences = experienceService.getPopularExperiences(5);
+        return new ResponseEntity<>(
+                experiences,
+                HttpStatus.OK
+        );
+    }*/
+
     @GetMapping (path = "/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ExpRequestDto> getOfferById(@PathVariable long id){
+    public ResponseEntity<ExpRequestDto> getExpById(@PathVariable long id){
         return new ResponseEntity<>(
                 experienceService.getExpById(id),
                 HttpStatus.OK

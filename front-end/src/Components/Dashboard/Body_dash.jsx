@@ -114,7 +114,7 @@ const Body_dash = () => {
                             flex: "none"
 
                             }}>
-                            <CardActionArea>
+                            <CardActionArea href={"/experience/"+ experience.id}>
                                 <CardMedia 
                                 component="img"
                                 height="150"

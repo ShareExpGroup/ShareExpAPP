@@ -1,23 +1,30 @@
 import { width } from '@mui/system';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Header from '../Home/header/Header';
 import ArticleCard from './ArticleCard';
 import '../../style/ArticleCard.css'
 import { Button } from '@mui/material';
 import CommentCard from '../Comment/CommentCard';
+import { getExperienceById } from '../../service/Experience';
 
 
 const Article = () => {
-    const article = {
-        title: "The More Important the Work, the More Important the Rest",
-        author: "Jenny Wilson ",
-        date: "December 2, 2018",
-        likes: "33",
-        comments: "10",
-        description: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. ",
-        content: "Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum, nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum. Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum."
-                  + "Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum, nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum. Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum"
-    }
+    let [experience, setExperience] = useState({data : ""});
+    
+    
+    useEffect(() => {
+        return () => {
+            if (experience.data === "")
+                getExperienceById( window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1), setExperience);
+    
+        };
+    },[experience.data]);
+
+    
+    
+
+    
+    
 
     const comments = [
         {
@@ -37,17 +44,17 @@ const Article = () => {
         <div>
             <Header/>
             <div style={{width: "900px", margin:"auto"}}>
-            <h2 style={{color: "#2563EB", fontSize: "28px"}}>{article.title}</h2>
-            <h6 style={{color: "#ABB5BE"}}>By {article.author} | {article.date}</h6>
+            <h2 style={{color: "#2563EB", fontSize: "28px"}}>{experience.data.title}</h2>
+            <h6 style={{color: "#ABB5BE"}}>By Amina Chaabane | {experience.data.creationDate}</h6>
             </div>
-            <ArticleCard article={article}/>
+            <ArticleCard experience={experience.data}/>
             <p style={{
                 width: "900px", margin:"auto", marginTop: "30px", 
                 color: "white", fontWeight: "300", fontSize: "22px",
                 lineHeight: "40px", marginBottom: "30px",
                 paddingBottom: "30px",
                 borderBottom: "1px solid #AF51C5"
-                }}>{article.content}</p>
+                }}>{experience.data.description}</p>
             <h5 style={{color: "#2563EB", fontWeight: 500, fontSize: "27px", width: "900px", margin:"auto", marginBottom: "30px"}}>Comments</h5>
             <form action="" className='form_comment'>
                 <input id="username" type="text" placeholder='username...' style={{
