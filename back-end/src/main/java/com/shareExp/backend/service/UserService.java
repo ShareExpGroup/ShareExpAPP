@@ -73,6 +73,11 @@ public class UserService<T extends User> {
         T user = getUserWithEmail(email);
         userRepository.deleteById(user.getId());
     }
+    public User deleteUserWithEmail1(String email) {
+        T user = getUserWithEmail(email);
+        userRepository.deleteById(user.getId());
+        return user ;
+    }
 
     public HttpStatus changePassword(String jwtToken, JwtChangePassword jwtChangePassword) {
         String email = getEmailFromJwtToken(jwtToken);

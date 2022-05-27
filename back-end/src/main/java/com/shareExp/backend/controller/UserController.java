@@ -83,6 +83,13 @@ public class UserController {
                 HttpStatus.OK
         );
     }
+    @DeleteMapping(path = "/delete/ByEmails")
+    public ResponseEntity<Void> deleteUserByEmail1(@RequestHeader String email) {
+        userService.deleteUserWithEmail1(email);
+        return new ResponseEntity<>(
+                HttpStatus.OK
+        );
+    }
 
     @DeleteMapping(path = "/delete/ById/{id}")
     public ResponseEntity<Void> deleteUserById(@PathVariable long id) {
