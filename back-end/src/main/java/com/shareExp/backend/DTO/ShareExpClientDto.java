@@ -1,5 +1,7 @@
 package com.shareExp.backend.DTO;
 
+import com.shareExp.backend.model.ShareExpClient;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -12,6 +14,12 @@ public class ShareExpClientDto implements Serializable {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public ShareExpClientDto(ShareExpClient shareExpClient){
+        this.id = shareExpClient.getId();
+        this.firstName = shareExpClient.getFirstName();
+        this.lastName = shareExpClient.getLastName();
     }
 
     public long getId() {
