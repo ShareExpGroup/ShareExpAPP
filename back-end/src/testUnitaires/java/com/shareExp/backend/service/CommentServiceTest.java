@@ -42,8 +42,7 @@ class CommentServiceTest {
             CommentDto commentDto = new CommentDto("contentOfComment",shareExpClientDto);
             Comment comment=new Comment(shareExpClient,
                 commentDto.getContent());
-            Mockito.when(commentRepository.save(comment))
-                    .thenReturn(comment);
+
             Comment actualCommentSaved= commentService.AddComment(commentDto);
             org.assertj.core.api.Assertions.assertThat(commentDto.getContent()).isEqualTo(actualCommentSaved.getContent());
 
