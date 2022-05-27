@@ -23,7 +23,7 @@ public class CommentService {
         //String email = "amina.chaabane34@gmail.com";
         String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Comment comment=new Comment(clientService.findByEmail(email),
-                commentDto.getContent());
+                commentDto.getContent(), commentDto.getExperience());
         commentRepository.save(comment);
      return comment;
     }
