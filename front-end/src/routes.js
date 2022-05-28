@@ -13,6 +13,8 @@ import { isshaereExpuser,isGuest, isAdmin } from "./service/authentication"
 import AddCateg from "./Components/AddCategory/AddCateg"
 import ListCoach from "./Components/Admin/ListCoach"
 import DashbordAdmin from "./Components/Admin/DashboardAdmin/DashbordAdmin"
+import ListeExperience from "./Components/ListExperience/ListeExperence"
+
 
 const IsshaereExpuserRoutes = () => useRoutes([
     {path:"/", element: <Dashboard/>},
@@ -21,6 +23,8 @@ const IsshaereExpuserRoutes = () => useRoutes([
     {path:"/AddCateg", element: <AddCateg/>},
     {path:"/ListUsers", element: <ListCoach/>},
     {path:"/DashbordAdmin", element: <DashbordAdmin/>},
+    {path:"/ListeExperience/:id", element: <ListeExperience/>},
+    
 
 
 ]);

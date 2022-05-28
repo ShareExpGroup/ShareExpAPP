@@ -4,10 +4,12 @@ import Start from './Start';
 import Card from '@mui/material/Card'
 import '../../style/Body_dash.css'
 import HorizontalScroll from 'react-scroll-horizontal';
+import { Link } from '@mui/material';
 import { CardActionArea, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
 import {useEffect, useState} from "react";
 import {getcategories} from "../../service/Category"
 import {getPopularExperiences} from "../../service/Experience"
+import {getExperienceBycategory} from "../../service/Experience"
 const Body_dash = () => {
     let [categories, setCategories] = useState({data: []});
     let [experiences, setExperiences] = useState({data: []});
@@ -81,8 +83,9 @@ const Body_dash = () => {
                 }}>Categories</h1>
               <HorizontalScroll>
                   {categories.data.map((category) => (
+                    <Link href={"/ListeExperience/"+category.id}>
                        
-                        <div className="category_card">
+                        <div className="category_card" onClick={()=>{} } >
                             <div>{category.name}</div>
                             <img src={"http://localhost:8080/api/document/" + category.image} alt={category.name} style={{
                                 width: "300px",
@@ -92,7 +95,7 @@ const Body_dash = () => {
                             }}/>
                             
                         </div>
-                        
+                        </Link>
                   ))}
                
             </HorizontalScroll>     
