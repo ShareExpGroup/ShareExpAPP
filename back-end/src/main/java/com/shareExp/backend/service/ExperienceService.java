@@ -122,6 +122,14 @@ public class ExperienceService {
         return this.experienceRepository.findById(id).map(ExpRequestDto::new).orElseThrow(() -> new ExperienceNotFoundException("422", "offer not found"));
     }
 
+
+    public Experience getfullExpById(long id) {
+        return this.experienceRepository.findAllById(id);}
+
+    public Experience getExperienceByTitle(Long id) {
+        return this.experienceRepository.findExperienceById(id);}
+
+
     public List<ExpRequestDto> getExpByCategory(long id) {
 
         return this.experienceRepository.findAllByCategoryId(id).get().stream().map(ExpRequestDto::new).collect(Collectors.toList());

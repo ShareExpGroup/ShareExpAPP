@@ -7,30 +7,35 @@ import { Button } from '@mui/material';
 import CommentCard from '../Comment/CommentCard';
 import { getExperienceById } from '../../service/Experience';
 import { addcomment } from '../../service/Comment';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 
 
 const Article = (props) => {
     let [experience, setExperience] = useState({data : ""});
-    
-    
+  
     useEffect(() => {
+        setCurrValue(experience)
         return () => {
             if (experience.data === "")
             getExperienceById( window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1), setExperience);
+      
             if (props.test=== "fromcategory")
             getExperienceById(props.test,setExperience)   
-
+        
     
         };
-    },[experience.data]);
+
+    },[]);
 
     const [values, setValues] = useState([]);
     const [currValue, setCurrValue] = useState("");
     const [successful, setSuccessful] = useState(false);
     
     const handleSubmit = (event) => {
-     console.log("addex");
-      addcomment(event,setSuccessful, experience.data);
+console.log("knsubmittze")
+      addcomment(event,setSuccessful,  window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1) );
+      console.log(experience.data.title)
     };
  
     
@@ -69,21 +74,22 @@ const Article = (props) => {
                 borderBottom: "1px solid #AF51C5"
                 }}>{experience.data.description}</p>
             <h5 style={{color: "#2563EB", fontWeight: 500, fontSize: "27px", width: "900px", margin:"auto", marginBottom: "30px"}}>Comments</h5>
-            <form action="" className='form_comment' onSubmit={handleSubmit}>
-                <input id="username" type="text" placeholder='username...' name='username' style={{
-                    background: "black", color: "white", border: "1px solid rgba(0, 0, 0, 0.5)",
-                    }} onChange={handleSubmit}/>
-                <input id="input_comment" type="text" placeholder='your comment...' name='content' style={{
+            
+            <form action="post" className='form_comment' onSubmit={handleSubmit}>
+             
+                <input id="content" type="text" placeholder='your comment...' name='content' style={{
                     background: "black", color: "white", border: "1px solid rgba(0, 0, 0, 0.5)",
                     }} onChange={handleSubmit}/>
                 <Button  style={{color :"white", width: "133px", height: "40px", marginLeft: "50px"}} className="button" type='submit'>Comment</Button>
             </form>
             {comments.map((comment) => (
-                <CommentCard comment={comment}/>
+                <CommentCard  key="{username}"comment={comment}/>
             ))}
             
         </div>
     );
 };
 
-export default Article;
+export default Article; /*<input id="content" type="text" placeholder='your comment...' name='content' style={{  width: "500px",height:"50px",
+                    background: "black", color: "white", border: "1px solid rgba(0, 0, 0, 0.5)",
+                    }}/>*/
