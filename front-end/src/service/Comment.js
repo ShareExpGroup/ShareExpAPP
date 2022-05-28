@@ -51,5 +51,24 @@ export function addcomment(event, setSuccessful,title) {
               alert(err.response.data.error + "\nerreur lors de l'ajout de l'offre, veuillez reentrer vos données, en cas de besoin contacter l'admin\n" );
               console.error(err);
           }
-      );       
-  }
+      );  }   
+      
+      export function getComments(id, setExperience){
+
+        console.log("rak dkhlti lgetcomments")
+        console.log("id :  ",id);
+        axios.get(`http://localhost:8080/api/comment/${id}`
+        ).then(
+            async (res) => {
+                setExperience({data: res.data});
+                console.log(res.data);
+                console.log(res.data.shareExpClientDto)
+            }
+            ,
+            (err) => {
+                alert("erreur lors du demande des ressources, en cas de besoin contacter l'admin");
+                console.error(err);
+            }
+        );
+    }
+  

@@ -6,27 +6,39 @@ import '../../style/ArticleCard.css'
 import { Button } from '@mui/material';
 import CommentCard from '../Comment/CommentCard';
 import { getExperienceById } from '../../service/Experience';
-import { addcomment } from '../../service/Comment';
+import { addcomment,getComments } from '../../service/Comment';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
 
 const Article = (props) => {
+    const [val, setVal] = useState("");
     let [experience, setExperience] = useState({data : ""});
   
     useEffect(() => {
-        setCurrValue(experience)
         return () => {
             if (experience.data === "")
-            getExperienceById( window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1), setExperience);
+            getExperienceById( window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1), setExperience,setVal);
       
             if (props.test=== "fromcategory")
-            getExperienceById(props.test,setExperience)   
+            getExperienceById(props.test,setExperience,setVal) 
+            
+     
         
     
         };
 
     },[]);
+
+    useEffect(() => {
+        console.log("ana dkhlt luse effect")
+         return () => {
+             getComments(window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1) , setComment)
+         
+     
+         };
+ 
+     },[]);
 
     const [values, setValues] = useState([]);
     const [currValue, setCurrValue] = useState("");
@@ -40,30 +52,18 @@ console.log("knsubmittze")
  
     
     
-
+    const [comment,setComment] =  useState({data : []});
     
-    
+ 
 
-    const comments = [
-        {
-          username: "Michel Michel", 
-          text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean luctus ut est sed faucibus. Duis bibendum ac ex vehicula laoreet. Suspendisse congue vulputate lobortis.",
-          date: "1 minute" 
-        }
-        ,
-        {
-            username: "abcd", 
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean luctus ut est sed faucibus. Duis bibendum ac ex vehicula laoreet. Suspendisse congue vulputate lobortis.",
-            date: "2 minutes" 
-        }
-    ]
+
     
     return (
         <div>
             <Header/>
             <div style={{width: "900px", margin:"auto"}}>
             <h2 style={{color: "#2563EB", fontSize: "28px"}}>{experience.data.title}</h2>
-            <h6 style={{color: "#ABB5BE"}}>By Amina Chaabane | {experience.data.creationDate}</h6>
+            <h6 style={{color: "#ABB5BE"}}>By {val} | {experience.data.creationDate}</h6>
             </div>
             <ArticleCard experience={experience.data}/>
             <p style={{
@@ -82,8 +82,9 @@ console.log("knsubmittze")
                     }} onChange={handleSubmit}/>
                 <Button  style={{color :"white", width: "133px", height: "40px", marginLeft: "50px"}} className="button" type='submit'>Comment</Button>
             </form>
-            {comments.map((comment) => (
-                <CommentCard  key="{username}"comment={comment}/>
+            {comment.data.map((com) => (
+                <CommentCard                  username={val}  text={com.content}
+                />
             ))}
             
         </div>

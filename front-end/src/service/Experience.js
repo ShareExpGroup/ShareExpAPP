@@ -73,7 +73,7 @@ export function getPopularExperiences( setExperiences){//
     );
 }
 
-export function getExperienceById(id, setExperience){//
+export function getExperienceById(id, setExperience,setVal){//
     console.log("id :  ",id);
     axios.get(`http://localhost:8080/api/exp/${id}`
     ).then(
@@ -81,6 +81,7 @@ export function getExperienceById(id, setExperience){//
             setExperience({data: res.data});
             console.log(res.data);
             console.log(res.data.shareExpClientDto)
+            setVal(res.data.shareExpClientDto.firstName)
         }
         ,
         (err) => {

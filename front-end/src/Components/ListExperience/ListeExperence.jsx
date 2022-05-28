@@ -24,19 +24,19 @@ function ListeExperience(props){
     return(
         <div>
             <Header/>
-            <Grid container  style={{marginTop:"10%"}}>
+            <Grid container  style={{marginTop:"2%"}}>
          
-            <Grid item xs={2}></Grid>
 {
 experiences.data.map((experience) =>(
    
-    <Grid item xs={3}>
+    <Grid item xs={4}>
     <Card sx={{ maxWidth: 345 }} style={{
         backgroundColor: "black", 
         color: "white",
         height: "auto",
         width: "400px",
-       
+        marginTop:"10%",
+        marginLeft:'10%',
         flex: "none"
 
         }}>
@@ -70,7 +70,7 @@ experiences.data.map((experience) =>(
 ))
 
 }
-<Grid item xs={2}></Grid>
+
 </Grid>
 </div>
 )

@@ -1,12 +1,18 @@
 package com.shareExp.backend.service;
 
+import com.shareExp.backend.DTO.CommDTO;
 import com.shareExp.backend.DTO.CommentDto;
 import com.shareExp.backend.model.Comment;
+import com.shareExp.backend.model.Experience;
 import com.shareExp.backend.model.ShareExpClient;
 import com.shareExp.backend.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CommentService {
@@ -37,5 +43,13 @@ public class CommentService {
                 commentDto.getContent(),experienceService.getExperienceByTitle(commentDto.getExperience()));
         commentRepository.save(comment);
      return comment;
+    }
+
+    public List<CommDTO> getAllCommentByex
+            (Long id) {
+        Experience exp=  experienceService.getfullExpById(id);
+
+        Optional<List<Comment>> experiences = commentRepository.findCommentsByExperience(exp);
+        return experiences.get().stream().map(CommDTO::new).collect(Collectors.toList());
     }
 }
