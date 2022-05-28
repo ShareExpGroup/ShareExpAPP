@@ -53,7 +53,7 @@ function AddExpForm(){
 
     const handleSubmit = (event) => {
      console.log("addex");
-      addexp(event,setSuccessful);
+      addexp(event,setSuccessful,values);
     };
  
 
