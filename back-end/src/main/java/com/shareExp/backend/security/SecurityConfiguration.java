@@ -59,7 +59,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/exp/**").permitAll()
         .antMatchers("/api/categ/**").permitAll()
                 .antMatchers("/api/superuser/**").permitAll()
-                .antMatchers("/api/account/delete/**").permitAll();
+                .antMatchers("/api/account/delete/**").permitAll()
+                .antMatchers("/api/document/**").permitAll().antMatchers("api/comment/**").permitAll();
+
 
 
 

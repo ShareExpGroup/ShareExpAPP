@@ -4,26 +4,37 @@ import com.shareExp.backend.DTO.CommentDto;
 import com.shareExp.backend.model.Comment;
 import com.shareExp.backend.model.ShareExpClient;
 import com.shareExp.backend.repository.CommentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CommentService {
 
+    @Autowired
     private CommentRepository commentRepository;
+    @Autowired
     private ClientService clientService;
-
+    @Autowired
+    private ExperienceService experienceService;
+    public CommentService(CommentRepository commentRepository, ClientService clientService, ExperienceService experienceService) {
+        this.commentRepository = commentRepository;
+        this.clientService = clientService;
+        this.experienceService = experienceService;
+    }
     public CommentService(CommentRepository commentRepository, ClientService clientService) {
         this.commentRepository = commentRepository;
         this.clientService = clientService;
     }
 
+    public CommentService() {
+    }
+
     public Comment AddComment(CommentDto commentDto){
-        //for testing
-        //String email = "amina.chaabane34@gmail.com";
+
         String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Comment comment=new Comment(clientService.findByEmail(email),
-                commentDto.getContent(), commentDto.getExperience());
+                commentDto.getContent(),experienceService.getExperienceByTitle(commentDto.getExperience()));
         commentRepository.save(comment);
      return comment;
     }

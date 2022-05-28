@@ -29,7 +29,7 @@ public class Comment  {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_clients")
     @Nullable
-   private ShareExpClient name;
+   private ShareExpClient shareExpClient;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinColumn(name = "id_experience")
@@ -45,7 +45,7 @@ public class Comment  {
     private Date createdAt;
 
     public Comment(ShareExpClient name, String content, Experience experience) {
-        this.name = name;
+        this.shareExpClient = name;
         this.content = content;
         this.experience = experience;
     }
@@ -55,11 +55,11 @@ public class Comment  {
     }
 
     public void setName(ShareExpClient name) {
-        this.name = name;
+        this.shareExpClient = name;
     }
 
     public ShareExpClient getName() {
-        return name;
+        return shareExpClient;
     }
 
     public void setContent(String content) {

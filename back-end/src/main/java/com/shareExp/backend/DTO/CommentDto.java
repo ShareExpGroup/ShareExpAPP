@@ -8,8 +8,16 @@ import java.util.Objects;
 @Data
 public class CommentDto implements Serializable {
    ShareExpClientDto shareExpClientDto;
-   Experience experience;
+    Long experience;
     private final String content;
+
+    public  Long getExperience() {
+        return experience;
+    }
+
+    public void setExperience( Long experience) {
+        this.experience = experience;
+    }
 
     public ShareExpClientDto getShareExpClientDto() {
         return shareExpClientDto;
@@ -19,7 +27,7 @@ public class CommentDto implements Serializable {
         this.shareExpClientDto = shareExpClientDto;
     }
 
-    public CommentDto(String content, Experience experience, ShareExpClientDto shareExpClientDto) {
+    public CommentDto(String content,  Long experience, ShareExpClientDto shareExpClientDto) {
         this.content = content;
         this.experience = experience;
         this.shareExpClientDto= shareExpClientDto;
