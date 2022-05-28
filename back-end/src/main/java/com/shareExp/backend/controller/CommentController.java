@@ -1,7 +1,6 @@
 package com.shareExp.backend.controller;
 
 
-import com.shareExp.backend.DTO.CommDTO;
 import com.shareExp.backend.DTO.CommentDto;
 import com.shareExp.backend.model.Comment;
 import com.shareExp.backend.repository.CommentRepository;
@@ -23,11 +22,6 @@ public class CommentController {
 CommentService commentService;
     @Autowired
 CommentRepository commentRepository;
-    @GetMapping(path =  "/{id}")
-    public List<CommDTO> getAllComments(@PathVariable("id") Long id, HttpServletResponse response) {
-
-        return commentService.getAllCommentByex(id);
-    }
 
     @GetMapping("/comments")
     @ResponseBody
