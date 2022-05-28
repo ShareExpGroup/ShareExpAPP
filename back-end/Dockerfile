@@ -6,7 +6,7 @@ COPY pom.xml .
 RUN sed -i 's/\r$//' mvnw
 RUN ./mvnw dependency:go-offline -B
 COPY src src
-RUN ./mvnw package
+RUN ./mvnw package -DskipTests
 RUN mkdir -p target/dependency
 RUN cd target/dependency; jar -xf ../*.jar
 
