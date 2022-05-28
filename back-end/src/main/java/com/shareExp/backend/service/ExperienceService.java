@@ -4,6 +4,7 @@ import com.shareExp.backend.DTO.ExpRequestDto;
 import com.shareExp.backend.DTO.ExperienceDto;
 import com.shareExp.backend.exception.ExperienceNotFoundException;
 import com.shareExp.backend.exception.UserIncompleteDataException;
+import com.shareExp.backend.model.Category;
 import com.shareExp.backend.model.Experience;
 import com.shareExp.backend.model.ShareExpClient;
 import com.shareExp.backend.repository.ExperienceRepository;
@@ -119,6 +120,11 @@ public class ExperienceService {
 
     public ExpRequestDto getExpById(long id) {
         return this.experienceRepository.findById(id).map(ExpRequestDto::new).orElseThrow(() -> new ExperienceNotFoundException("422", "offer not found"));
+    }
+
+    public List<ExpRequestDto> getExpByCategory(long id) {
+
+        return this.experienceRepository.findAllByCategoryId(id).get().stream().map(ExpRequestDto::new).collect(Collectors.toList());
     }
 
 }

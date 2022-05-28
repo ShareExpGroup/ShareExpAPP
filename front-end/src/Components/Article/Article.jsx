@@ -9,14 +9,17 @@ import { getExperienceById } from '../../service/Experience';
 import { addcomment } from '../../service/Comment';
 
 
-const Article = () => {
+const Article = (props) => {
     let [experience, setExperience] = useState({data : ""});
     
     
     useEffect(() => {
         return () => {
             if (experience.data === "")
-                getExperienceById( window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1), setExperience);
+            getExperienceById( window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1), setExperience);
+            if (props.test=== "fromcategory")
+            getExperienceById(props.test,setExperience)   
+
     
         };
     },[experience.data]);

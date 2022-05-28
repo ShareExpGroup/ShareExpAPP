@@ -72,6 +72,15 @@ public class ExperienceController {
                 HttpStatus.OK
         );
     }
+
+    @GetMapping(path = "/category/{id}")
+    public ResponseEntity<List<ExpRequestDto>> getExperiencesByCategory(@PathVariable long id){
+        List<ExpRequestDto> experiences = experienceService.getExpByCategory(id);
+        return new ResponseEntity<>(
+                experiences,
+                HttpStatus.OK
+        );
+    }
 /*
     @GetMapping(path = "/Popular")
     public ResponseEntity<List<Experience>> getPopularExperiences(){
