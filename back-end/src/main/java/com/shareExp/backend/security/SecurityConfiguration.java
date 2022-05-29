@@ -66,12 +66,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 
 
-                /*.antMatchers("/api/services/hello").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/api/services/teacher/**").hasAuthority("auth1")
-                .antMatchers("/api/services/hellos").hasRole("MANAGER")
-                .antMatchers("/api/user/all").hasRole("ADMIN")
-                .antMatchers("/api/user/withEmail").hasAnyRole("ADMIN MANAGER")
-                .antMatchers("/api/user/withUserName").hasAnyRole("ADMIN MANAGER");*/
+                /*.to handle authorisations*/
     }
 
     @Bean
